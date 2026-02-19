@@ -5,12 +5,13 @@ import DailyTracker from './components/DailyTracker';
 import WeeklyMenu from './components/WeeklyMenu';
 import WorkoutPlan from './components/WorkoutPlan';
 import PhotoAnalyzer from './components/PhotoAnalyzer';
+import BodyProgress from './components/BodyProgress';
 
-type Tab = 'dia' | 'foto' | 'treino' | 'receitas' | 'cardapio';
+type Tab = 'dia' | 'evolucao' | 'treino' | 'receitas' | 'cardapio';
 
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: 'dia',      label: 'Meu Dia',   emoji: '📊' },
-  { id: 'foto',     label: 'Foto',      emoji: '📸' },
+  { id: 'evolucao', label: 'Evolução',  emoji: '📷' },
   { id: 'treino',   label: 'Treino',    emoji: '🏋️' },
   { id: 'receitas', label: 'Receitas',  emoji: '🍳' },
   { id: 'cardapio', label: 'Cardápio',  emoji: '📅' },
@@ -49,7 +50,7 @@ export default function App() {
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {tab === 'dia'      && <DailyTracker />}
-        {tab === 'foto'     && <PhotoAnalyzer />}
+        {tab === 'evolucao' && <BodyProgress />}
         {tab === 'treino'   && <WorkoutPlan />}
         {tab === 'receitas' && <RecipeGenerator />}
         {tab === 'cardapio' && <WeeklyMenu />}
