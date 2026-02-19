@@ -58,24 +58,16 @@ export default function DailyTracker() {
     try {
       // Gemini Vision API — analisa a foto de verdade!
       const GEMINI_KEY = 'AIzaSyBRHydayP0lYTVHveEbQ5LXqhBq266bRfQ';
-      const imageData = base64.split(',')[1]; // remove data:image/...;base64,
+      const imageData = base64.split(',')[1];
       const mimeType = base64.split(';')[0].split(':')[1] || 'image/jpeg';
 
       const prompt = `Você é um nutricionista especialista. Analise esta foto de refeição e identifique todos os alimentos visíveis.
 Responda APENAS em JSON válido, sem markdown, com este formato exato:
-{
-  "description": "Descrição geral da refeição em português",
-  "foods": [
-    {"name": "Nome do alimento (quantidade estimada)", "calories": 123, "protein": 10}
-  ],
-  "totalCalories": 456,
-  "totalProtein": 25,
-  "tip": "Dica nutricional em português (máx 60 caracteres)"
-}
-Seja específico com os alimentos brasileiros. Use estimativas realistas para porções domésticas.`;
+{"description":"Descrição geral da refeição em português","foods":[{"name":"Nome do alimento com quantidade estimada","calories":123,"protein":10}],"totalCalories":456,"totalProtein":25,"tip":"Dica nutricional curta em português"}
+Seja específico com alimentos brasileiros (arroz, feijão, frango, ovo, etc). Use estimativas realistas para porções domésticas.`;
 
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_KEY}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -307,6 +299,26 @@ Seja específico com os alimentos brasileiros. Use estimativas realistas para po
                 ))}
               </div>
               <p className="text-xs text-green-600 bg-green-50 rounded-lg p-2">{photoResult.tip}</p>
+              {/* Editable override */}
+              <div className="border-t border-cyan-200 pt-2 space-y-1.5">
+                <p className="text-xs text-gray-400 font-medium">✏️ Corrigir se necessário:</p>
+                <input
+                  className="w-full text-sm border border-gray-200 rounded-lg px-2 py-1.5 bg-white"
+                  value={photoResult.description}
+                  onChange={e => setPhotoResult({ ...photoResult, description: e.target.value })}
+                  placeholder="Descrição da refeição"
+                />
+                <div className="flex gap-2">
+                  <input type="number" className="flex-1 text-sm border border-gray-200 rounded-lg px-2 py-1.5 bg-white"
+                    value={photoResult.totalCalories}
+                    onChange={e => setPhotoResult({ ...photoResult, totalCalories: Number(e.target.value) })}
+                    placeholder="Calorias" />
+                  <input type="number" className="flex-1 text-sm border border-gray-200 rounded-lg px-2 py-1.5 bg-white"
+                    value={photoResult.totalProtein}
+                    onChange={e => setPhotoResult({ ...photoResult, totalProtein: Number(e.target.value) })}
+                    placeholder="Proteína (g)" />
+                </div>
+              </div>
               <div className="flex gap-2 pt-1">
                 <button onClick={addFromPhoto}
                   className="flex-1 bg-cyan-500 text-white rounded-xl py-2.5 text-sm font-medium">
