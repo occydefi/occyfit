@@ -20,11 +20,11 @@ export default function App() {
   const [tab, setTab] = useState<Tab>('dia');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-pink-50 to-yellow-50">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #e0f7fa 0%, #fff9f0 40%, #ffffff 100%)' }}>
       <Header />
 
       {/* Tabs */}
-      <div className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-gray-100">
+      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur border-b border-cyan-100 shadow-sm">
         <div className="max-w-4xl mx-auto flex">
           {TABS.map(t => (
             <button
@@ -32,8 +32,8 @@ export default function App() {
               onClick={() => setTab(t.id)}
               className={`flex-1 py-3 text-xs font-medium flex flex-col items-center gap-0.5 transition-colors ${
                 tab === t.id
-                  ? 'text-green-600 border-b-2 border-green-500'
-                  : 'text-gray-400 hover:text-gray-600'
+                  ? 'text-cyan-600 border-b-2 border-cyan-500'
+                  : 'text-gray-400 hover:text-cyan-500'
               }`}
             >
               <span className="text-lg">{t.emoji}</span>
