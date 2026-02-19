@@ -20,7 +20,7 @@ const RECIPES: Recipe[] = [
     name: 'Bowl de Frutas com Sementes',
     ingredients: ['banana', 'mamao', 'aveia', 'chia', 'linhaca', 'castanha_para'],
     time: '5 min', calories: 280, protein: 9, carbs: 48, fat: 8,
-    instructions: '🛒 O que você vai precisar: 1 banana, ½ mamão, 4 col. sopa aveia, 1 col. chá chia, 1 col. chá linhaça, 3 castanhas do Pará, canela e mel a gosto.
+    instructions: `🛒 O que você vai precisar: 1 banana, ½ mamão, 4 col. sopa aveia, 1 col. chá chia, 1 col. chá linhaça, 3 castanhas do Pará, canela e mel a gosto.
 
 📋 Passo a passo:
 1. Pegue uma tigela funda (pode ser de vidro ou cerâmica)
@@ -33,7 +33,7 @@ const RECIPES: Recipe[] = [
 8. Finalize com uma pitada de canela e um fio de mel
 9. Sirva imediatamente — quanto mais fresco, melhor!
 
-💡 Dica: Use frutas bem maduras — ficam mais doces naturalmente e não precisa de açúcar!',
+💡 Dica: Use frutas bem maduras — ficam mais doces naturalmente e não precisa de açúcar!`,
     tags: ['sem glúten', 'energético', 'fibras'], hours: ['07:00', '08:00'],
     difficulty: 'fácil',
   },
@@ -41,7 +41,7 @@ const RECIPES: Recipe[] = [
     name: 'Ovo Mexido com Queijo',
     ingredients: ['ovo', 'queijo_minas'],
     time: '8 min', calories: 230, protein: 18, carbs: 2, fat: 16,
-    instructions: '🛒 O que você vai precisar: 2-3 ovos, 30g queijo minas fatiado, sal, pimenta preta, 1 col. chá manteiga ou azeite.
+    instructions: `🛒 O que você vai precisar: 2-3 ovos, 30g queijo minas fatiado, sal, pimenta preta, 1 col. chá manteiga ou azeite.
 
 📋 Passo a passo:
 1. Quebre os ovos numa tigela — bata com um garfo até gema e clara ficarem misturadas
@@ -54,7 +54,7 @@ const RECIPES: Recipe[] = [
 8. Desligue o fogo — o calor residual termina o cozimento
 9. Sirva imediatamente na torrada ou pão integral
 
-💡 Segredo: fogo baixo + não deixar secar demais = ovo mexido cremoso e gostoso!',
+💡 Segredo: fogo baixo + não deixar secar demais = ovo mexido cremoso e gostoso!`,
     tags: ['proteico', 'rápido', 'poucos carboidratos'], hours: ['07:00', '08:00', '09:00'],
     difficulty: 'fácil',
   },
@@ -62,7 +62,7 @@ const RECIPES: Recipe[] = [
     name: 'Tapioca com Ovo e Ricota',
     ingredients: ['tapioca', 'ovo', 'ricota'],
     time: '10 min', calories: 320, protein: 22, carbs: 38, fat: 8,
-    instructions: '🛒 O que você vai precisar: 3-4 col. sopa goma de tapioca, 1 ovo, 50g ricota, sal, ervas a gosto (salsinha, cebolinha).
+    instructions: `🛒 O que você vai precisar: 3-4 col. sopa goma de tapioca, 1 ovo, 50g ricota, sal, ervas a gosto (salsinha, cebolinha).
 
 📋 Passo a passo:
 1. Tempere a ricota: amasse com um garfo, adicione sal, pimenta e salsinha picada
@@ -75,7 +75,7 @@ const RECIPES: Recipe[] = [
 8. Dobre a outra metade por cima, como um pastel
 9. Deslize para o prato e sirva quente
 
-💡 A goma de tapioca já vem pronta no mercado — não precisa hidratar!',
+💡 A goma de tapioca já vem pronta no mercado — não precisa hidratar!`,
     tags: ['sem glúten', 'proteico'], hours: ['07:00', '08:00', '10:00'],
     difficulty: 'fácil',
   },
@@ -83,7 +83,7 @@ const RECIPES: Recipe[] = [
     name: 'Vitamina Energética',
     ingredients: ['banana', 'abacate', 'aveia', 'chia'],
     time: '5 min', calories: 340, protein: 7, carbs: 45, fat: 14,
-    instructions: '🛒 O que você vai precisar: 1 banana, ½ abacate maduro, 3 col. sopa aveia, 1 col. chá chia, 200ml leite ou água de coco, 1 col. chá mel (opcional).
+    instructions: `🛒 O que você vai precisar: 1 banana, ½ abacate maduro, 3 col. sopa aveia, 1 col. chá chia, 200ml leite ou água de coco, 1 col. chá mel (opcional).
 
 📋 Passo a passo:
 1. Descasque a banana — pode usar banana congelada para ficar mais cremosa e gelada!
@@ -95,7 +95,7 @@ const RECIPES: Recipe[] = [
 7. Prove e ajuste: muito grosso? Adicione mais leite. Pouco doce? Mais mel
 8. Sirva imediatamente em copo alto
 
-💡 Dica PRO: Congele bananas maduras em saquinhos — sempre terá à mão pra vitaminas!',
+💡 Dica PRO: Congele bananas maduras em saquinhos — sempre terá à mão pra vitaminas!`,
     tags: ['pré-treino', 'energético'], hours: ['06:30', '07:00', '08:00'],
     difficulty: 'fácil',
   },
@@ -103,7 +103,7 @@ const RECIPES: Recipe[] = [
     name: 'Panqueca de Banana com Aveia',
     ingredients: ['banana', 'aveia', 'ovo'],
     time: '15 min', calories: 310, protein: 14, carbs: 52, fat: 6,
-    instructions: '🛒 O que você vai precisar: 1 banana madura (quanto mais madura melhor!), 2 ovos, 4 col. sopa aveia em flocos, canela a gosto.
+    instructions: `🛒 O que você vai precisar: 1 banana madura (quanto mais madura melhor!), 2 ovos, 4 col. sopa aveia em flocos, canela a gosto.
 
 📋 Passo a passo:
 1. Descasque a banana e amasse com um garfo numa tigela até virar um purê liso
@@ -117,7 +117,7 @@ const RECIPES: Recipe[] = [
 9. Doure do outro lado por mais 1-2 minutos
 10. Repita até acabar a massa — rende 4-6 panqueques
 
-💡 Sirva com mel, frutas frescas ou iogurte grego por cima!',
+💡 Sirva com mel, frutas frescas ou iogurte grego por cima!`,
     tags: ['sem farinha', 'energético', 'doce'], hours: ['07:00', '08:00', '09:00'],
     difficulty: 'fácil',
   },
@@ -125,7 +125,7 @@ const RECIPES: Recipe[] = [
     name: 'Iogurte com Granola e Mel',
     ingredients: ['iogurte_grego', 'aveia', 'castanha_para', 'mel'],
     time: '3 min', calories: 290, protein: 14, carbs: 38, fat: 8,
-    instructions: '🛒 O que você vai precisar: 150g iogurte grego natural, 2-3 col. sopa aveia ou granola, 2-3 castanhas do Pará, 1 col. chá mel, canela a gosto.
+    instructions: `🛒 O que você vai precisar: 150g iogurte grego natural, 2-3 col. sopa aveia ou granola, 2-3 castanhas do Pará, 1 col. chá mel, canela a gosto.
 
 📋 Passo a passo:
 1. Abra o iogurte grego e despeje numa tigela ou copo bonito
@@ -136,7 +136,7 @@ const RECIPES: Recipe[] = [
 6. Polvilhe canela a gosto
 7. Opcional: adicione frutas vermelhas (morango, mirtilo) por cima
 
-💡 Use iogurte grego NATURAL — tem mais proteína e menos açúcar que os com sabor!',
+💡 Use iogurte grego NATURAL — tem mais proteína e menos açúcar que os com sabor!`,
     tags: ['probiótico', 'rápido'], hours: ['07:00', '08:00', '10:00'],
     difficulty: 'fácil',
   },
@@ -144,7 +144,7 @@ const RECIPES: Recipe[] = [
     name: 'Overnight Oats',
     ingredients: ['aveia', 'chia', 'banana'],
     time: '5 min (preparo na noite anterior)', calories: 320, protein: 10, carbs: 58, fat: 5,
-    instructions: '🛒 O que você vai precisar: 4 col. sopa aveia em flocos, 150ml leite (qualquer tipo), 1 col. chá chia, 1 banana, mel e canela.
+    instructions: `🛒 O que você vai precisar: 4 col. sopa aveia em flocos, 150ml leite (qualquer tipo), 1 col. chá chia, 1 banana, mel e canela.
 
 📋 Passo a passo (preparo na NOITE ANTERIOR):
 1. Pegue um pote com tampa (vidro é ideal, mas pote de plástico também funciona)
@@ -161,7 +161,7 @@ Na manhã seguinte:
 10. Castanhas, mel e mais canela para finalizar
 11. Pode comer frio mesmo — é a graça do overnight oats!
 
-💡 Prepare 2-3 potes de uma vez para ter café da manhã rápido por vários dias!',
+💡 Prepare 2-3 potes de uma vez para ter café da manhã rápido por vários dias!`,
     tags: ['preparo antecipado', 'fibras'], hours: ['07:00', '08:00'],
     difficulty: 'fácil',
   },
@@ -171,7 +171,7 @@ Na manhã seguinte:
     name: 'Mix de Castanhas',
     ingredients: ['castanha_para', 'amendoa', 'nozes'],
     time: '1 min', calories: 200, protein: 6, carbs: 8, fat: 18,
-    instructions: '🛒 O que você vai precisar: 2-3 castanhas do Pará, 5 amêndoas, 3 nozes, 1 col. sopa semente de girassol.
+    instructions: `🛒 O que você vai precisar: 2-3 castanhas do Pará, 5 amêndoas, 3 nozes, 1 col. sopa semente de girassol.
 
 📋 Passo a passo:
 1. Separe as castanhas numa tigelinha ou num saquinho pequeno
@@ -180,7 +180,7 @@ Na manhã seguinte:
 4. Pronto! Coma devagar, mastigando bem
 
 💡 Atenção: 2-3 castanhas do Pará por dia é o suficiente! Comer muito pode causar excesso de selênio.
-💡 Dica: Separe as porções da semana em saquinhos na noite de domingo — praticidade na hora H!',
+💡 Dica: Separe as porções da semana em saquinhos na noite de domingo — praticidade na hora H!`,
     tags: ['rápido', 'poucos carboidratos', 'ômega 3'], hours: ['09:30', '10:00', '10:30'],
     difficulty: 'fácil',
   },
@@ -188,7 +188,7 @@ Na manhã seguinte:
     name: 'Abacate com Limão e Castanhas',
     ingredients: ['abacate', 'castanha_para'],
     time: '3 min', calories: 220, protein: 3, carbs: 10, fat: 19,
-    instructions: '🛒 O que você vai precisar: ½ abacate maduro, suco de ½ limão, sal e pimenta a gosto, 3 castanhas do Pará, 1 col. sopa semente de girassol.
+    instructions: `🛒 O que você vai precisar: ½ abacate maduro, suco de ½ limão, sal e pimenta a gosto, 3 castanhas do Pará, 1 col. sopa semente de girassol.
 
 📋 Passo a passo:
 1. Corte o abacate ao meio no sentido do comprimento, girando a faca em torno do caroço
@@ -201,7 +201,7 @@ Na manhã seguinte:
 8. Amasse levemente com um garfo (não precisa virar purê completo)
 9. Pique as castanhas e coloque por cima junto com as sementes
 
-💡 O limão serve dois propósitos: sabor E evita que o abacate escureça!',
+💡 O limão serve dois propósitos: sabor E evita que o abacate escureça!`,
     tags: ['poucos carboidratos', 'gordura boa'], hours: ['09:30', '10:00'],
     difficulty: 'fácil',
   },
@@ -209,7 +209,7 @@ Na manhã seguinte:
     name: 'Suco Verde Detox',
     ingredients: [],
     time: '5 min', calories: 45, protein: 1.5, carbs: 9, fat: 0.3,
-    instructions: '🛒 O que você vai precisar: 1 folha de couve, ½ pepino, suco de 1 limão, 1 pedacinho gengibre fresco (~1cm), 200ml água gelada, 1 col. chá chia.
+    instructions: `🛒 O que você vai precisar: 1 folha de couve, ½ pepino, suco de 1 limão, 1 pedacinho gengibre fresco (~1cm), 200ml água gelada, 1 col. chá chia.
 
 📋 Passo a passo:
 1. Lave bem a couve e o pepino em água corrente
@@ -224,7 +224,7 @@ Na manhã seguinte:
 10. Adicione a chia, mexa com colher e sirva logo (a chia incha rapidinho)
 11. NÃO coe — as fibras são o mais importante!
 
-💡 Se ficar muito amargo: adicione 1 col. chá mel ou mais limão',
+💡 Se ficar muito amargo: adicione 1 col. chá mel ou mais limão`,
     tags: ['detox', 'anti-inflamatório'], hours: ['07:00', '09:00', '10:00'],
     difficulty: 'fácil',
   },
@@ -234,7 +234,7 @@ Na manhã seguinte:
     name: 'Frango Grelhado com Legumes',
     ingredients: ['frango', 'abobrinha', 'cenoura', 'brocolis'],
     time: '25 min', calories: 310, protein: 38, carbs: 18, fat: 6,
-    instructions: '🛒 O que você vai precisar: 150g peito de frango, 1 abobrinha, 1 cenoura, brócolis (1 xíc.), azeite, alho, sal, ervas a gosto.
+    instructions: `🛒 O que você vai precisar: 150g peito de frango, 1 abobrinha, 1 cenoura, brócolis (1 xíc.), azeite, alho, sal, ervas a gosto.
 
 📋 Passo a passo:
 PREPARANDO O FRANGO:
@@ -253,7 +253,7 @@ PREPARANDO OS LEGUMES:
 11. Adicione cenoura em rodelas (1 minuto), depois abobrinha e brócolis
 12. Tempere com sal e tampe por 3-4 minutos para cozinhar no vapor
 
-💡 O frango descansado por 2-3 minutos após grelhar fica muito mais suculento!',
+💡 O frango descansado por 2-3 minutos após grelhar fica muito mais suculento!`,
     tags: ['proteico', 'poucos carboidratos'], hours: ['12:00', '13:00'],
     difficulty: 'fácil',
   },
@@ -261,7 +261,7 @@ PREPARANDO OS LEGUMES:
     name: 'Bowl Proteico com Arroz',
     ingredients: ['frango', 'arroz_integral', 'feijao', 'abobrinha'],
     time: '30 min', calories: 490, protein: 42, carbs: 52, fat: 7,
-    instructions: '🛒 O que você vai precisar: 150g frango, ½ xíc. arroz integral cru, 4 col. sopa feijão cozido, 1 abobrinha, azeite, limão, sal.
+    instructions: `🛒 O que você vai precisar: 150g frango, ½ xíc. arroz integral cru, 4 col. sopa feijão cozido, 1 abobrinha, azeite, limão, sal.
 
 📋 Passo a passo:
 ARROZ INTEGRAL:
@@ -281,7 +281,7 @@ MONTAGEM DO BOWL:
 10. Monte: arroz na base, frango desfiado ao lado, feijão, abobrinha
 11. Regue com azeite e esprema limão por cima
 
-💡 Arroz integral leva mais tempo mas tem muito mais fibra e nutrientes que o branco!',
+💡 Arroz integral leva mais tempo mas tem muito mais fibra e nutrientes que o branco!`,
     tags: ['completo', 'pós-treino'], hours: ['12:00', '13:00', '14:00'],
     difficulty: 'fácil',
   },
@@ -289,7 +289,7 @@ MONTAGEM DO BOWL:
     name: 'Salada de Atum com Ovos',
     ingredients: ['ovo', 'cenoura'],
     time: '15 min', calories: 280, protein: 32, carbs: 12, fat: 11,
-    instructions: '🛒 O que você vai precisar: 1 lata atum ao natural (120g), 2 ovos, 1 cenoura, milho verde, salsinha, azeite, limão, sal.
+    instructions: `🛒 O que você vai precisar: 1 lata atum ao natural (120g), 2 ovos, 1 cenoura, milho verde, salsinha, azeite, limão, sal.
 
 📋 Passo a passo:
 OVOS COZIDOS PERFEITOS:
@@ -307,7 +307,7 @@ MONTAGEM:
 10. Misture bem e coloque os ovos cozidos por cima
 11. Sirva frio — pode guardar na geladeira por até 2 dias!
 
-💡 Prefira atum ao NATURAL — o atum em óleo tem muito mais calorias!',
+💡 Prefira atum ao NATURAL — o atum em óleo tem muito mais calorias!`,
     tags: ['poucos carboidratos', 'rápido', 'proteico'], hours: ['12:00', '13:00'],
     difficulty: 'fácil',
   },
@@ -315,7 +315,7 @@ MONTAGEM:
     name: 'Wrap de Frango com Ricota',
     ingredients: ['frango', 'ricota'],
     time: '15 min', calories: 290, protein: 34, carbs: 22, fat: 8,
-    instructions: '🛒 O que você vai precisar: 1 wrap ou tortilla integral, 120g frango grelhado desfiado, 50g ricota, folhas de alface, 1 tomate, limão, ervas, sal.
+    instructions: `🛒 O que você vai precisar: 1 wrap ou tortilla integral, 120g frango grelhado desfiado, 50g ricota, folhas de alface, 1 tomate, limão, ervas, sal.
 
 📋 Passo a passo:
 PREPARANDO O FRANGO:
@@ -336,7 +336,7 @@ MONTANDO O WRAP:
 11. Dobre as bordas laterais para dentro e enrole firmemente começando pelo lado de baixo
 12. Corte ao meio na diagonal para servir
 
-💡 Pode preparar antes e guardar na geladeira por até 4 horas!',
+💡 Pode preparar antes e guardar na geladeira por até 4 horas!`,
     tags: ['prático', 'proteico'], hours: ['12:00', '13:00', '15:00'],
     difficulty: 'fácil',
   },
@@ -344,7 +344,7 @@ MONTANDO O WRAP:
     name: 'Peixe Assado com Legumes',
     ingredients: ['abobrinha', 'brocolis', 'batata_doce'],
     time: '35 min', calories: 360, protein: 35, carbs: 28, fat: 8,
-    instructions: '🛒 O que você vai precisar: 150g filé de peixe (tilápia, merluza ou atum), 1 batata doce, 1 abobrinha, brócolis, azeite, limão, alho, sal, ervas.
+    instructions: `🛒 O que você vai precisar: 150g filé de peixe (tilápia, merluza ou atum), 1 batata doce, 1 abobrinha, brócolis, azeite, limão, alho, sal, ervas.
 
 📋 Passo a passo:
 PREPARANDO:
@@ -365,7 +365,7 @@ ASSANDO:
 11. O peixe está pronto quando a carne desmanche facilmente com um garfo
 12. A batata doce deve estar macia quando espetar um garfo
 
-💡 Verifique depois de 20 minutos — cada forno é diferente!',
+💡 Verifique depois de 20 minutos — cada forno é diferente!`,
     tags: ['ômega 3', 'anti-inflamatório'], hours: ['12:00', '13:00', '19:00'],
     difficulty: 'médio',
   },
@@ -373,7 +373,7 @@ ASSANDO:
     name: 'Sopa de Legumes com Frango',
     ingredients: ['frango', 'cenoura', 'abobrinha', 'brocolis'],
     time: '40 min', calories: 250, protein: 28, carbs: 22, fat: 4,
-    instructions: '🛒 O que você vai precisar: 150g frango, 1 cenoura, 1 abobrinha, 1 chuchu (opcional), 1 caldo de galinha caseiro ou tablete, alho, cebola, sal, salsinha.
+    instructions: `🛒 O que você vai precisar: 150g frango, 1 cenoura, 1 abobrinha, 1 chuchu (opcional), 1 caldo de galinha caseiro ou tablete, alho, cebola, sal, salsinha.
 
 📋 Passo a passo:
 1. Pique o alho e a cebola em pedaços pequenos
@@ -390,7 +390,7 @@ ASSANDO:
 12. Prove o sal e ajuste se necessário
 13. Finalize com salsinha picada fresca — faz toda a diferença!
 
-💡 Quanto mais tempo cozinhar, mais gostoso fica. Pode fazer em quantidade e guardar 3 dias na geladeira!',
+💡 Quanto mais tempo cozinhar, mais gostoso fica. Pode fazer em quantidade e guardar 3 dias na geladeira!`,
     tags: ['reconfortante', 'light'], hours: ['12:00', '19:00', '20:00'],
     difficulty: 'médio',
   },
@@ -400,7 +400,7 @@ ASSANDO:
     name: 'Bowl Proteico Pós-Treino',
     ingredients: ['iogurte_grego', 'banana', 'aveia', 'amendoa'],
     time: '5 min', calories: 350, protein: 22, carbs: 42, fat: 9,
-    instructions: '🛒 O que você vai precisar: 150g iogurte grego natural, 1 banana, 3 col. sopa aveia, 10 amêndoas, 1 col. chá mel, canela.
+    instructions: `🛒 O que você vai precisar: 150g iogurte grego natural, 1 banana, 3 col. sopa aveia, 10 amêndoas, 1 col. chá mel, canela.
 
 📋 Passo a passo:
 1. Este lanche é para comer em até 30 minutos após o treino — tenha os ingredientes prontos!
@@ -412,7 +412,7 @@ ASSANDO:
 7. Polvilhe canela
 8. Coma imediatamente — a proteína do iogurte + carboidrato da banana é a combinação perfeita pós-treino!
 
-💡 Por que este lanche é especial: o iogurte grego tem ~15-18g proteína por potinho — seus músculos agradecem!',
+💡 Por que este lanche é especial: o iogurte grego tem ~15-18g proteína por potinho — seus músculos agradecem!`,
     tags: ['pós-treino', 'proteico'], hours: ['15:00', '16:00', '17:00'],
     difficulty: 'fácil',
   },
@@ -420,7 +420,7 @@ ASSANDO:
     name: 'Ovo Cozido com Castanhas',
     ingredients: ['ovo', 'castanha_para'],
     time: '10 min', calories: 200, protein: 15, carbs: 3, fat: 14,
-    instructions: '🛒 O que você vai precisar: 2 ovos, 2-3 castanhas do Pará, sal, azeite (opcional).
+    instructions: `🛒 O que você vai precisar: 2 ovos, 2-3 castanhas do Pará, sal, azeite (opcional).
 
 📋 Passo a passo:
 MÉTODO INFALÍVEL PARA OVO COZIDO:
@@ -436,7 +436,7 @@ SERVINDO:
 8. Corte ao meio e tempere com sal e um fio de azeite
 9. Sirva com as castanhas do Pará ao lado
 
-💡 O banho de gelo é ESSENCIAL — facilita descascar e para o cozimento na hora certa!',
+💡 O banho de gelo é ESSENCIAL — facilita descascar e para o cozimento na hora certa!`,
     tags: ['proteico', 'poucos carboidratos', 'rápido'], hours: ['15:00', '16:00'],
     difficulty: 'fácil',
   },
@@ -444,7 +444,7 @@ SERVINDO:
     name: 'Tapioca com Abacate',
     ingredients: ['tapioca', 'abacate'],
     time: '8 min', calories: 310, protein: 3, carbs: 42, fat: 14,
-    instructions: '🛒 O que você vai precisar: 3-4 col. sopa goma de tapioca, ½ abacate maduro, suco de ½ limão, sal, semente de girassol.
+    instructions: `🛒 O que você vai precisar: 3-4 col. sopa goma de tapioca, ½ abacate maduro, suco de ½ limão, sal, semente de girassol.
 
 📋 Passo a passo:
 PREPARANDO O RECHEIO:
@@ -462,7 +462,7 @@ FAZENDO A TAPIOCA:
 10. Espalhe o abacate temperado em metade da tapioca
 11. Dobre a outra metade por cima
 
-💡 Nunca coloque o recheio muito quente — o abacate não gosta de calor!',
+💡 Nunca coloque o recheio muito quente — o abacate não gosta de calor!`,
     tags: ['sem glúten', 'gordura boa'], hours: ['15:00', '16:00', '17:00'],
     difficulty: 'fácil',
   },
@@ -470,7 +470,7 @@ FAZENDO A TAPIOCA:
     name: 'Smoothie Tropical',
     ingredients: ['mamao', 'banana', 'chia'],
     time: '5 min', calories: 180, protein: 3, carbs: 40, fat: 2,
-    instructions: '🛒 O que você vai precisar: ½ mamão maduro, 1 banana, 200ml água de coco (ou leite de coco light), 1 col. chá chia, gengibre fresco a gosto.
+    instructions: `🛒 O que você vai precisar: ½ mamão maduro, 1 banana, 200ml água de coco (ou leite de coco light), 1 col. chá chia, gengibre fresco a gosto.
 
 📋 Passo a passo:
 1. Corte o mamão ao meio, retire as sementes com colher e retire a polpa
@@ -482,7 +482,7 @@ FAZENDO A TAPIOCA:
 7. Sirva imediatamente em copo alto
 8. Opcional: gelo por cima para ficar geladinho
 
-💡 Para ficar mais gelado e cremoso: congele a banana em pedaços antes!',
+💡 Para ficar mais gelado e cremoso: congele a banana em pedaços antes!`,
     tags: ['digestivo', 'tropical'], hours: ['15:00', '16:00'],
     difficulty: 'fácil',
   },
@@ -492,7 +492,7 @@ FAZENDO A TAPIOCA:
     name: 'Omelete de Legumes',
     ingredients: ['ovo', 'abobrinha', 'brocolis'],
     time: '12 min', calories: 260, protein: 20, carbs: 10, fat: 16,
-    instructions: '🛒 O que você vai precisar: 3 ovos, 1 abobrinha pequena, ½ xíc. brócolis, sal, pimenta, azeite, salsinha.
+    instructions: `🛒 O que você vai precisar: 3 ovos, 1 abobrinha pequena, ½ xíc. brócolis, sal, pimenta, azeite, salsinha.
 
 📋 Passo a passo:
 PREPARANDO:
@@ -511,7 +511,7 @@ COZINHANDO:
 11. Está pronto quando as bordas estiverem firmes e o centro ainda levemente tremido
 12. Deslize para o prato dobrado ao meio ou sirva aberto
 
-💡 Omelete mal passado (ainda cremoso no centro) é muito mais gostoso!',
+💡 Omelete mal passado (ainda cremoso no centro) é muito mais gostoso!`,
     tags: ['poucos carboidratos', 'leve', 'proteico'], hours: ['19:00', '20:00'],
     difficulty: 'fácil',
   },
@@ -519,7 +519,7 @@ COZINHANDO:
     name: 'Frango Desfiado com Batata Doce',
     ingredients: ['frango', 'batata_doce'],
     time: '30 min', calories: 380, protein: 35, carbs: 38, fat: 5,
-    instructions: '🛒 O que você vai precisar: 150g frango (peito ou coxa sem pele), 1 batata doce média (150-200g), azeite, alho, sal, ervas, limão.
+    instructions: `🛒 O que você vai precisar: 150g frango (peito ou coxa sem pele), 1 batata doce média (150-200g), azeite, alho, sal, ervas, limão.
 
 📋 Passo a passo:
 BATATA DOCE COZIDA:
@@ -539,7 +539,7 @@ FRANGO DESFIADO:
 12. Tempere com ervas e limão
 13. Sirva ao lado da batata doce amassada
 
-💡 A batata doce tem carboidratos de absorção lenta — energia por horas!',
+💡 A batata doce tem carboidratos de absorção lenta — energia por horas!`,
     tags: ['equilibrado', 'proteico'], hours: ['19:00', '20:00'],
     difficulty: 'fácil',
   },
@@ -547,7 +547,7 @@ FRANGO DESFIADO:
     name: 'Salada Completa com Ovos',
     ingredients: ['ovo', 'cenoura', 'abobrinha'],
     time: '15 min', calories: 240, protein: 16, carbs: 14, fat: 13,
-    instructions: '🛒 O que você vai precisar: 2-3 ovos cozidos, alface (1 pé), rúcula, 1 cenoura, 1 tomate, ½ pepino, abobrinha, azeite, limão, mostarda, sal.
+    instructions: `🛒 O que você vai precisar: 2-3 ovos cozidos, alface (1 pé), rúcula, 1 cenoura, 1 tomate, ½ pepino, abobrinha, azeite, limão, mostarda, sal.
 
 📋 Passo a passo:
 MOLHO DE MOSTARDA E LIMÃO:
@@ -568,7 +568,7 @@ MONTAGEM:
 11. Adicione os ovos cozidos cortados ao meio
 12. Regue com o molho na hora de servir (nunca antes — a salada murcha!)
 
-💡 Princípio de ouro: nunca misture o molho antes de servir!',
+💡 Princípio de ouro: nunca misture o molho antes de servir!`,
     tags: ['leve', 'poucos carboidratos'], hours: ['19:00', '20:00'],
     difficulty: 'fácil',
   },
@@ -576,7 +576,7 @@ MONTAGEM:
     name: 'Caldo de Frango Proteico',
     ingredients: ['frango', 'cenoura'],
     time: '35 min', calories: 210, protein: 26, carbs: 12, fat: 4,
-    instructions: '🛒 O que você vai precisar: 200g frango, 1 cenoura, 1 chuchu, salsão (aipo), cúrcuma, gengibre, sal, salsinha.
+    instructions: `🛒 O que você vai precisar: 200g frango, 1 cenoura, 1 chuchu, salsão (aipo), cúrcuma, gengibre, sal, salsinha.
 
 📋 Passo a passo:
 1. Corte o frango em pedaços médios (não muito pequenos para não ressecar)
@@ -591,7 +591,7 @@ MONTAGEM:
 10. Prove o sal e ajuste
 11. Finalize com salsinha fresca picada na hora de servir
 
-💡 A cúrcuma é anti-inflamatória e deixa o caldo com uma cor dourada linda!',
+💡 A cúrcuma é anti-inflamatória e deixa o caldo com uma cor dourada linda!`,
     tags: ['leve', 'anti-inflamatório', 'reconfortante'], hours: ['19:00', '20:00', '21:00'],
     difficulty: 'médio',
   },
