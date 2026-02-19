@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Header from './components/Header';
-import MealBuilder from './components/MealBuilder';
 import RecipeGenerator from './components/RecipeGenerator';
 import DailyTracker from './components/DailyTracker';
 import WeeklyMenu from './components/WeeklyMenu';
