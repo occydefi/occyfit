@@ -4,7 +4,6 @@ import RecipeGenerator from './components/RecipeGenerator';
 import DailyTracker from './components/DailyTracker';
 import WeeklyMenu from './components/WeeklyMenu';
 import WorkoutPlan from './components/WorkoutPlan';
-import PhotoAnalyzer from './components/PhotoAnalyzer';
 import BodyProgress from './components/BodyProgress';
 
 type Tab = 'dia' | 'evolucao' | 'treino' | 'receitas' | 'cardapio';

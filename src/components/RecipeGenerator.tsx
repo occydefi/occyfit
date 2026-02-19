@@ -29,7 +29,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['ovo', 'queijo_minas'],
     time: '8 min', calories: 230, protein: 18, carbs: 2, fat: 16,
     instructions: '1. Bata 2-3 ovos com pitada de sal\n2. Derreta manteiga na frigideira\n3. Adicione os ovos em fogo baixo\n4. Mexa devagar, adicione queijo antes de finalizar',
-    tags: ['proteico', 'rápido', 'low carb'], hours: ['07:00', '08:00', '09:00'],
+    tags: ['proteico', 'rápido', 'poucos carboidratos'], hours: ['07:00', '08:00', '09:00'],
     difficulty: 'fácil',
   },
   {
@@ -79,7 +79,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['castanha_para', 'amendoa', 'nozes'],
     time: '1 min', calories: 200, protein: 6, carbs: 8, fat: 18,
     instructions: '1. Separe 30g de mix variado\n2. Castanha do pará (2-3 un.) + amêndoas + nozes\n3. Pronto! Coma devagar',
-    tags: ['rápido', 'low carb', 'ômega 3'], hours: ['09:30', '10:00', '10:30'],
+    tags: ['rápido', 'poucos carboidratos', 'ômega 3'], hours: ['09:30', '10:00', '10:30'],
     difficulty: 'fácil',
   },
   {
@@ -87,7 +87,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['abacate', 'castanha_para'],
     time: '3 min', calories: 220, protein: 3, carbs: 10, fat: 19,
     instructions: '1. Corte meio abacate\n2. Tempere com limão, sal e pimenta\n3. Castanhas por cima\n4. Opcional: semente de girassol',
-    tags: ['low carb', 'gordura boa'], hours: ['09:30', '10:00'],
+    tags: ['poucos carboidratos', 'gordura boa'], hours: ['09:30', '10:00'],
     difficulty: 'fácil',
   },
   {
@@ -105,7 +105,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['frango', 'abobrinha', 'cenoura', 'brocolis'],
     time: '25 min', calories: 310, protein: 38, carbs: 18, fat: 6,
     instructions: '1. Tempere o frango com sal, alho e ervas\n2. Grelhe 15 min cada lado\n3. Refogue os legumes no azeite com alho\n4. Sirva junto com fio de azeite',
-    tags: ['proteico', 'low carb'], hours: ['12:00', '13:00'],
+    tags: ['proteico', 'poucos carboidratos'], hours: ['12:00', '13:00'],
     difficulty: 'fácil',
   },
   {
@@ -121,7 +121,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['ovo', 'cenoura'],
     time: '15 min', calories: 280, protein: 32, carbs: 12, fat: 11,
     instructions: '1. Cozinhe 2 ovos por 8 min\n2. Abra 1 lata de atum ao natural\n3. Misture com cenoura ralada, milho e salsinha\n4. Tempere com limão, azeite e sal\n5. Ovos cozidos por cima',
-    tags: ['low carb', 'rápido', 'proteico'], hours: ['12:00', '13:00'],
+    tags: ['poucos carboidratos', 'rápido', 'proteico'], hours: ['12:00', '13:00'],
     difficulty: 'fácil',
   },
   {
@@ -163,7 +163,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['ovo', 'castanha_para'],
     time: '10 min', calories: 200, protein: 15, carbs: 3, fat: 14,
     instructions: '1. Cozinhe 2 ovos por 8 min (gema mole) ou 10 min (dura)\n2. Descasque e tempere com sal e azeite\n3. Sirva com 3-4 castanhas do pará',
-    tags: ['proteico', 'low carb', 'rápido'], hours: ['15:00', '16:00'],
+    tags: ['proteico', 'poucos carboidratos', 'rápido'], hours: ['15:00', '16:00'],
     difficulty: 'fácil',
   },
   {
@@ -189,7 +189,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['ovo', 'abobrinha', 'brocolis'],
     time: '12 min', calories: 260, protein: 20, carbs: 10, fat: 16,
     instructions: '1. Bata 3 ovos com sal e ervas\n2. Refogue os legumes picados\n3. Despeje os ovos por cima\n4. Tampa e cozinhe em fogo baixo\n5. Dobre ao meio quando firmar',
-    tags: ['low carb', 'leve', 'proteico'], hours: ['19:00', '20:00'],
+    tags: ['poucos carboidratos', 'leve', 'proteico'], hours: ['19:00', '20:00'],
     difficulty: 'fácil',
   },
   {
@@ -205,7 +205,7 @@ const RECIPES: Recipe[] = [
     ingredients: ['ovo', 'cenoura', 'abobrinha'],
     time: '15 min', calories: 240, protein: 16, carbs: 14, fat: 13,
     instructions: '1. Cozinhe ovos e fatie\n2. Folhas verdes (alface, rúcula)\n3. Cenoura ralada, tomate, pepino\n4. Abobrinha grelhada\n5. Molho: azeite + limão + mostarda + sal',
-    tags: ['leve', 'low carb'], hours: ['19:00', '20:00'],
+    tags: ['leve', 'poucos carboidratos'], hours: ['19:00', '20:00'],
     difficulty: 'fácil',
   },
   {
