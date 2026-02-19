@@ -113,7 +113,7 @@ export default function DailyTracker() {
             <span>{mealEmoji[entry.meal] || '🍽️'}</span>
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-400">{entry.meal}</p>
-              <p className="text-sm font-medium text-gray-700 truncate">{entry.description}</p>
+              <p className="text-sm font-medium text-gray-700 break-words">{entry.description}</p>
             </div>
             <div className="text-right shrink-0">
               <p className="text-sm font-bold text-green-600">{entry.calories} kcal</p>
