@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-// Each meal has a specific Unsplash photo matched to what's actually described
-const U = (id: string) => `https://images.unsplash.com/${id}?w=400&q=75&fit=crop`;
+// AI-generated food images stored locally
+const AI = (name: string) => `/meals/${name}.png`;
 
 const MENU = [
   {
@@ -15,12 +15,12 @@ const MENU = [
       ceia:         'Chá de camomila + 2 castanhas do Pará',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'), // scrambled eggs
-      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'), // mixed nuts
-      almoco:       U('photo-1532550884684-3f4e3dfe18e7'), // grilled chicken
-      lanche:       U('photo-1488477181945-e81351ae6da6'), // greek yogurt
-      janta:        U('photo-1525351484163-7529414f2af8'), // omelette
-      ceia:         U('photo-1597318928-28811d41d423'), // herbal tea
+      cafe:         AI('ovos-mexidos'), // scrambled eggs
+      lanche_manha: AI('iogurte'), // mixed nuts
+      almoco:       AI('frango-arroz'), // grilled chicken
+      lanche:       AI('iogurte'), // greek yogurt
+      janta:        AI('omelete'), // omelette
+      ceia:         AI('cha'), // herbal tea
     },
     calories: 1540, protein: 108,
   },
@@ -35,12 +35,12 @@ const MENU = [
       ceia:         'Chá de gengibre + 3 castanhas ou 1 kiwi',
     },
     images: {
-      cafe:         U('photo-1490645935967-10de6ba17061'), // fruit bowl with oats
-      lanche_manha: U('photo-1523049673857-eb18f1d7b578'), // avocado
-      almoco:       U('photo-1558030006-f679c2f35f32'), // beef + veggies
-      lanche:       U('photo-1610832958506-aa56368176cf'), // green smoothie
-      janta:        U('photo-1621996346565-e3debb646c84'), // crepe / tapioca-like
-      ceia:         U('photo-1564890369-c9ece05b06f9'), // ginger tea
+      cafe:         AI('bowl-frutas'), // fruit bowl with oats
+      lanche_manha: AI('abacate'), // avocado
+      almoco:       AI('frango-arroz'), // beef + veggies
+      lanche:       AI('vitamina'), // green smoothie
+      janta:        AI('tapioca'), // crepe / tapioca-like
+      ceia:         AI('cha'), // ginger tea
     },
     calories: 1590, protein: 101,
   },
@@ -55,12 +55,12 @@ const MENU = [
       ceia:         '100g iogurte grego natural',
     },
     images: {
-      cafe:         U('photo-1525351484163-7529414f2af8'), // egg + crepe breakfast
-      lanche_manha: U('photo-1502741078-5d25f2a92e87'), // green juice
-      almoco:       U('photo-1546069901-ba9599a7e63c'), // chicken rice beans bowl
-      lanche:       U('photo-1567306565-7ae6da49f888'), // apple + nuts
-      janta:        U('photo-1547592180-85f173990554'), // warm soup
-      ceia:         U('photo-1488477181945-e81351ae6da6'), // yogurt
+      cafe:         AI('omelete'), // egg + crepe breakfast
+      lanche_manha: AI('vitamina'), // green juice
+      almoco:       AI('frango-arroz'), // chicken rice beans bowl
+      lanche:       AI('iogurte'), // apple + nuts
+      janta:        AI('sopa'), // warm soup
+      ceia:         AI('iogurte'), // yogurt
     },
     calories: 1540, protein: 106,
   },
@@ -75,12 +75,12 @@ const MENU = [
       ceia:         'Chá + 1 quadrado (10g) chocolate 70% (opcional)',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'), // eggs + papaya
-      lanche_manha: U('photo-1512621776951-a57141f2eefd'), // yogurt with berries
-      almoco:       U('photo-1467003909585-2f8a72700288'), // fish fillet with veggies
-      lanche:       U('photo-1505576399279-565b52d4ac71'), // tropical smoothie
-      janta:        U('photo-1554502083-be884b249e28'), // wrap sandwich
-      ceia:         U('photo-1549007994-cb92caebd54b'), // dark chocolate + tea
+      cafe:         AI('ovos-mexidos'), // eggs + papaya
+      lanche_manha: AI('iogurte'), // yogurt with berries
+      almoco:       AI('peixe'), // fish fillet with veggies
+      lanche:       AI('vitamina'), // tropical smoothie
+      janta:        AI('frango-arroz'), // wrap sandwich
+      ceia:         AI('cha'), // dark chocolate + tea
     },
     calories: 1565, protein: 110,
   },
@@ -95,12 +95,12 @@ const MENU = [
       ceia:         'Chá de camomila + 5 nozes',
     },
     images: {
-      cafe:         U('photo-1505576399279-565b52d4ac71'), // mango banana smoothie
-      lanche_manha: U('photo-1510693206972-df098062cb71'), // boiled/cooked eggs
-      almoco:       U('photo-1532550884684-3f4e3dfe18e7'), // grilled chicken + rice
-      lanche:       U('photo-1541519099-60279cf3be69'), // avocado toast + green juice
-      janta:        U('photo-1525351484163-7529414f2af8'), // omelette + spinach
-      ceia:         U('photo-1597318928-28811d41d423'), // camomile tea + nuts
+      cafe:         AI('vitamina'), // mango banana smoothie
+      lanche_manha: AI('ovos-mexidos'), // boiled/cooked eggs
+      almoco:       AI('frango-arroz'), // grilled chicken + rice
+      lanche:       AI('abacate'), // avocado toast + green juice
+      janta:        AI('omelete'), // omelette + spinach
+      ceia:         AI('cha'), // camomile tea + nuts
     },
     calories: 1520, protein: 98,
   },
@@ -115,12 +115,12 @@ const MENU = [
       ceia:         'Vitamina: 1 banana + 150ml leite + 1 col. chá mel (recuperação pós-surf)',
     },
     images: {
-      cafe:         U('photo-1571748982800-fa51588ab41a'), // granola bowl with fruits
-      lanche_manha: U('photo-1571748982800-fa51588ab41a'), // banana pre-workout energy
-      almoco:       U('photo-1529042410-8d016f9c92c9'), // grilled meat + salad (bbq)
-      lanche:       U('photo-1523049673857-eb18f1d7b578'), // avocado halved
-      janta:        U('photo-1467003909585-2f8a72700288'), // grilled fish
-      ceia:         U('photo-1505576399279-565b52d4ac71'), // banana milk recovery smoothie
+      cafe:         AI('bowl-frutas'), // granola bowl with fruits
+      lanche_manha: AI('bowl-frutas'), // banana pre-workout energy
+      almoco:       AI('frango-arroz'), // grilled meat + salad (bbq)
+      lanche:       AI('abacate'), // avocado halved
+      janta:        AI('peixe'), // grilled fish
+      ceia:         AI('vitamina'), // banana milk recovery smoothie
     },
     calories: 1620, protein: 115,
   },
@@ -135,12 +135,12 @@ const MENU = [
       ceia:         'Chá relaxante + 20g castanhas variadas',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'), // eggs + cheese + papaya
-      lanche_manha: U('photo-1488477181945-e81351ae6da6'), // yogurt + banana pre-surf
-      almoco:       U('photo-1546069901-ba9599a7e63c'), // roast chicken + rice + broccoli
-      lanche:       U('photo-1502741078-5d25f2a92e87'), // green juice
-      janta:        U('photo-1621996346565-e3debb646c84'), // tapioca / crepe with filling
-      ceia:         U('photo-1597318928-28811d41d423'), // relaxing tea
+      cafe:         AI('ovos-mexidos'), // eggs + cheese + papaya
+      lanche_manha: AI('iogurte'), // yogurt + banana pre-surf
+      almoco:       AI('frango-arroz'), // roast chicken + rice + broccoli
+      lanche:       AI('vitamina'), // green juice
+      janta:        AI('tapioca'), // tapioca / crepe with filling
+      ceia:         AI('cha'), // relaxing tea
     },
     calories: 1555, protein: 107,
   },
@@ -159,12 +159,12 @@ const MENU_LUIZ = [
       ceia:         'Coalhada ou iogurte grego (200g) + 5 amêndoas',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'),
-      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'),
-      almoco:       U('photo-1532550884684-3f4e3dfe18e7'),
-      lanche:       U('photo-1488477181945-e81351ae6da6'),
-      janta:        U('photo-1525351484163-7529414f2af8'),
-      ceia:         U('photo-1488477181945-e81351ae6da6'),
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('iogurte'),
+      janta:        AI('omelete'),
+      ceia:         AI('iogurte'),
     },
     calories: 2100, protein: 155,
   },
@@ -179,12 +179,12 @@ const MENU_LUIZ = [
       ceia:         'Iogurte grego (150g) + 5 nozes',
     },
     images: {
-      cafe:         U('photo-1505576399279-565b52d4ac71'),
-      lanche_manha: U('photo-1498579809087-ef1e558fd1da'),
-      almoco:       U('photo-1558030006-f679c2f35f32'),
-      lanche:       U('photo-1512621776951-a57141f2eefd'),
-      janta:        U('photo-1546069901-ba9599a7e63c'),
-      ceia:         U('photo-1488477181945-e81351ae6da6'),
+      cafe:         AI('vitamina'),
+      lanche_manha: AI('frango-arroz'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('iogurte'),
+      janta:        AI('frango-arroz'),
+      ceia:         AI('iogurte'),
     },
     calories: 2150, protein: 158,
   },
@@ -199,12 +199,12 @@ const MENU_LUIZ = [
       ceia:         '3 ovos cozidos + 3 castanhas do Pará',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'),
-      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'),
-      almoco:       U('photo-1546069901-ba9599a7e63c'),
-      lanche:       U('photo-1610832958506-aa56368176cf'),
-      janta:        U('photo-1547592180-85f173990554'),
-      ceia:         U('photo-1510693206972-df098062cb71'),
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('vitamina'),
+      janta:        AI('sopa'),
+      ceia:         AI('ovos-mexidos'),
     },
     calories: 2080, protein: 152,
   },
@@ -219,12 +219,12 @@ const MENU_LUIZ = [
       ceia:         'Iogurte grego (150g) + mel + 5 amêndoas',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'),
-      lanche_manha: U('photo-1488477181945-e81351ae6da6'),
-      almoco:       U('photo-1467003909585-2f8a72700288'),
-      lanche:       U('photo-1621996346565-e3debb646c84'),
-      janta:        U('photo-1532550884684-3f4e3dfe18e7'),
-      ceia:         U('photo-1488477181945-e81351ae6da6'),
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('peixe'),
+      lanche:       AI('tapioca'),
+      janta:        AI('frango-arroz'),
+      ceia:         AI('iogurte'),
     },
     calories: 2090, protein: 160,
   },
@@ -239,12 +239,12 @@ const MENU_LUIZ = [
       ceia:         '200g iogurte grego + 1 col. mel + nozes',
     },
     images: {
-      cafe:         U('photo-1505576399279-565b52d4ac71'),
-      lanche_manha: U('photo-1510693206972-df098062cb71'),
-      almoco:       U('photo-1558030006-f679c2f35f32'),
-      lanche:       U('photo-1498579809087-ef1e558fd1da'),
-      janta:        U('photo-1525351484163-7529414f2af8'),
-      ceia:         U('photo-1488477181945-e81351ae6da6'),
+      cafe:         AI('vitamina'),
+      lanche_manha: AI('ovos-mexidos'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('frango-arroz'),
+      janta:        AI('omelete'),
+      ceia:         AI('iogurte'),
     },
     calories: 2120, protein: 156,
   },
@@ -259,12 +259,12 @@ const MENU_LUIZ = [
       ceia:         'Sanduíche integral: 2 fatias pão + frango (80g) + queijo + alface',
     },
     images: {
-      cafe:         U('photo-1571748982800-fa51588ab41a'),
-      lanche_manha: U('photo-1571748982800-fa51588ab41a'),
-      almoco:       U('photo-1529042410-8d016f9c92c9'),
-      lanche:       U('photo-1610832958506-aa56368176cf'),
-      janta:        U('photo-1467003909585-2f8a72700288'),
-      ceia:         U('photo-1554502083-be884b249e28'),
+      cafe:         AI('bowl-frutas'),
+      lanche_manha: AI('bowl-frutas'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('vitamina'),
+      janta:        AI('peixe'),
+      ceia:         AI('frango-arroz'),
     },
     calories: 2200, protein: 162,
   },
@@ -279,12 +279,12 @@ const MENU_LUIZ = [
       ceia:         '200g iogurte grego + mel + 10g cacau em pó',
     },
     images: {
-      cafe:         U('photo-1510693206972-df098062cb71'),
-      lanche_manha: U('photo-1488477181945-e81351ae6da6'),
-      almoco:       U('photo-1546069901-ba9599a7e63c'),
-      lanche:       U('photo-1505576399279-565b52d4ac71'),
-      janta:        U('photo-1621996346565-e3debb646c84'),
-      ceia:         U('photo-1488477181945-e81351ae6da6'),
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('vitamina'),
+      janta:        AI('tapioca'),
+      ceia:         AI('iogurte'),
     },
     calories: 2130, protein: 158,
   },
