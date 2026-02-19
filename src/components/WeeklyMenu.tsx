@@ -15,12 +15,12 @@ const MENU = [
       ceia:         'Chá de camomila + 2 castanhas do Pará',
     },
     images: {
-      cafe:         AI('ovos-mexidos'), // scrambled eggs
-      lanche_manha: AI('iogurte'), // mixed nuts
-      almoco:       AI('frango-arroz'), // grilled chicken
-      lanche:       AI('iogurte'), // greek yogurt
-      janta:        AI('omelete'), // omelette
-      ceia:         AI('cha'), // herbal tea
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('castanhas'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('iogurte'),
+      janta:        AI('omelete'),
+      ceia:         AI('cha'),
     },
     calories: 1540, protein: 108,
   },
@@ -35,12 +35,12 @@ const MENU = [
       ceia:         'Chá de gengibre + 3 castanhas ou 1 kiwi',
     },
     images: {
-      cafe:         AI('bowl-frutas'), // fruit bowl with oats
-      lanche_manha: AI('abacate'), // avocado
-      almoco:       AI('frango-arroz'), // beef + veggies
-      lanche:       AI('vitamina'), // green smoothie
-      janta:        AI('tapioca'), // crepe / tapioca-like
-      ceia:         AI('cha'), // ginger tea
+      cafe:         AI('bowl-frutas'),
+      lanche_manha: AI('abacate'),
+      almoco:       AI('carne'),
+      lanche:       AI('vitamina'),
+      janta:        AI('tapioca'),
+      ceia:         AI('cha'),
     },
     calories: 1590, protein: 101,
   },
@@ -55,12 +55,12 @@ const MENU = [
       ceia:         '100g iogurte grego natural',
     },
     images: {
-      cafe:         AI('omelete'), // egg + crepe breakfast
-      lanche_manha: AI('vitamina'), // green juice
-      almoco:       AI('frango-arroz'), // chicken rice beans bowl
-      lanche:       AI('iogurte'), // apple + nuts
-      janta:        AI('sopa'), // warm soup
-      ceia:         AI('iogurte'), // yogurt
+      cafe:         AI('tapioca'),
+      lanche_manha: AI('vitamina'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('maca-castanhas'),
+      janta:        AI('sopa'),
+      ceia:         AI('iogurte'),
     },
     calories: 1540, protein: 106,
   },
@@ -75,12 +75,12 @@ const MENU = [
       ceia:         'Chá + 1 quadrado (10g) chocolate 70% (opcional)',
     },
     images: {
-      cafe:         AI('ovos-mexidos'), // eggs + papaya
-      lanche_manha: AI('iogurte'), // yogurt with berries
-      almoco:       AI('peixe'), // fish fillet with veggies
-      lanche:       AI('vitamina'), // tropical smoothie
-      janta:        AI('frango-arroz'), // wrap sandwich
-      ceia:         AI('cha'), // dark chocolate + tea
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('peixe'),
+      lanche:       AI('vitamina'),
+      janta:        AI('wrap'),
+      ceia:         AI('cha'),
     },
     calories: 1565, protein: 110,
   },
@@ -95,12 +95,12 @@ const MENU = [
       ceia:         'Chá de camomila + 5 nozes',
     },
     images: {
-      cafe:         AI('vitamina'), // mango banana smoothie
-      lanche_manha: AI('ovos-mexidos'), // boiled/cooked eggs
-      almoco:       AI('frango-arroz'), // grilled chicken + rice
-      lanche:       AI('abacate'), // avocado toast + green juice
-      janta:        AI('omelete'), // omelette + spinach
-      ceia:         AI('cha'), // camomile tea + nuts
+      cafe:         AI('vitamina'),
+      lanche_manha: AI('ovos-mexidos'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('abacate'),
+      janta:        AI('omelete'),
+      ceia:         AI('cha'),
     },
     calories: 1520, protein: 98,
   },
@@ -115,12 +115,12 @@ const MENU = [
       ceia:         'Vitamina: 1 banana + 150ml leite + 1 col. chá mel (recuperação pós-surf)',
     },
     images: {
-      cafe:         AI('bowl-frutas'), // granola bowl with fruits
-      lanche_manha: AI('bowl-frutas'), // banana pre-workout energy
-      almoco:       AI('frango-arroz'), // grilled meat + salad (bbq)
-      lanche:       AI('abacate'), // avocado halved
-      janta:        AI('peixe'), // grilled fish
-      ceia:         AI('vitamina'), // banana milk recovery smoothie
+      cafe:         AI('bowl-frutas'),
+      lanche_manha: AI('maca-castanhas'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('abacate'),
+      janta:        AI('peixe'),
+      ceia:         AI('vitamina'),
     },
     calories: 1620, protein: 115,
   },
@@ -135,12 +135,12 @@ const MENU = [
       ceia:         'Chá relaxante + 20g castanhas variadas',
     },
     images: {
-      cafe:         AI('ovos-mexidos'), // eggs + cheese + papaya
-      lanche_manha: AI('iogurte'), // yogurt + banana pre-surf
-      almoco:       AI('frango-arroz'), // roast chicken + rice + broccoli
-      lanche:       AI('vitamina'), // green juice
-      janta:        AI('tapioca'), // tapioca / crepe with filling
-      ceia:         AI('cha'), // relaxing tea
+      cafe:         AI('ovos-mexidos'),
+      lanche_manha: AI('iogurte'),
+      almoco:       AI('frango-arroz'),
+      lanche:       AI('vitamina'),
+      janta:        AI('tapioca'),
+      ceia:         AI('cha'),
     },
     calories: 1555, protein: 107,
   },
