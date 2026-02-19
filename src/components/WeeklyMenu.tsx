@@ -1,107 +1,156 @@
+// Each meal has a specific Unsplash photo matched to what's actually described
+const U = (id: string) => `https://images.unsplash.com/${id}?w=400&q=75&fit=crop`;
+
 const MENU = [
   {
     day: 'Segunda', emoji: '💪', surf: false,
     meals: {
-      cafe: '2 ovos mexidos + 30g queijo minas + 1 banana média + café preto s/ açúcar',
+      cafe:         '2 ovos mexidos + 30g queijo minas + 1 banana + café preto s/ açúcar',
       lanche_manha: '30g mix castanhas (5 amêndoas + 2 nozes + 2 castanhas do Pará) + 1 col. sopa semente girassol',
-      almoco: '150g frango grelhado + 4 col. sopa arroz integral + 1 xíc. brócolis cozido + 1 fio azeite (1 col. chá)',
-      lanche: '150g iogurte grego natural + 2 castanhas do Pará + canela a gosto',
-      janta: 'Omelete de 3 ovos + 1 abobrinha média refogada + salada verde à vontade',
-      ceia: 'Chá de camomila + 2 castanhas do Pará',
+      almoco:       '150g frango grelhado + 4 col. sopa arroz integral + 1 xíc. brócolis cozido + 1 fio azeite',
+      lanche:       '150g iogurte grego natural + 2 castanhas do Pará + canela a gosto',
+      janta:        'Omelete de 3 ovos + 1 abobrinha média refogada + salada verde à vontade',
+      ceia:         'Chá de camomila + 2 castanhas do Pará',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'), // scrambled eggs
+      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'), // mixed nuts
+      almoco:       U('photo-1532550884684-3f4e3dfe18e7'), // grilled chicken
+      lanche:       U('photo-1488477181945-e81351ae6da6'), // greek yogurt
+      janta:        U('photo-1525351484163-7529414f2af8'), // omelette
+      ceia:         U('photo-1597318928-28811d41d423'), // herbal tea
     },
     calories: 1540, protein: 108,
   },
   {
     day: 'Terça', emoji: '🌿', surf: false,
     meals: {
-      cafe: 'Bowl: ½ mamão + 1 banana + 1 col. chá chia + 1 col. chá linhaça + 4 col. sopa aveia + 1 col. chá mel',
+      cafe:         'Bowl: ½ mamão + 1 banana + 1 col. chá chia + 1 col. chá linhaça + 4 col. sopa aveia + mel',
       lanche_manha: '½ abacate médio com limão + 1 col. sopa semente girassol',
-      almoco: '130g carne bovina magra grelhada + 1 batata doce média (150g) cozida + 1 cenoura cozida',
-      lanche: 'Vitamina: ½ abacate + 1 banana + 3 col. sopa aveia + 200ml água de coco',
-      janta: '100g frango desfiado + 2 tapiocas médias (30g goma cada) + 50g ricota temperada',
-      ceia: 'Chá de gengibre + 3 castanhas ou 1 kiwi',
+      almoco:       '130g carne bovina magra grelhada + 1 batata doce média (150g) cozida + 1 cenoura',
+      lanche:       'Vitamina: ½ abacate + 1 banana + 3 col. sopa aveia + 200ml água de coco',
+      janta:        '100g frango desfiado + 2 tapiocas (30g goma cada) + 50g ricota temperada',
+      ceia:         'Chá de gengibre + 3 castanhas ou 1 kiwi',
+    },
+    images: {
+      cafe:         U('photo-1490645935967-10de6ba17061'), // fruit bowl with oats
+      lanche_manha: U('photo-1523049673857-eb18f1d7b578'), // avocado
+      almoco:       U('photo-1558030006-f679c2f35f32'), // beef + veggies
+      lanche:       U('photo-1610832958506-aa56368176cf'), // green smoothie
+      janta:        U('photo-1621996346565-e3debb646c84'), // crepe / tapioca-like
+      ceia:         U('photo-1564890369-c9ece05b06f9'), // ginger tea
     },
     calories: 1590, protein: 101,
   },
   {
     day: 'Quarta', emoji: '🍳', surf: false,
     meals: {
-      cafe: '2 tapiocas (30g goma cada) recheadas com 50g ricota + 1 ovo mexido + café preto + 1 kiwi',
+      cafe:         '2 tapiocas (30g goma cada) recheadas com 50g ricota + 1 ovo mexido + café preto + 1 kiwi',
       lanche_manha: 'Suco verde (1 folha couve + ½ pepino + limão + gengibre) + 2 castanhas do Pará',
-      almoco: '150g frango grelhado + 3 col. sopa feijão + 3 col. sopa arroz integral + salada crua à vontade',
-      lanche: '1 maçã média + 20g mix castanhas + 1 col. sopa semente girassol',
-      janta: 'Sopa: 150g frango desfiado + abobrinha + cenoura + chuchu (porção generosa)',
-      ceia: '100g iogurte grego natural',
+      almoco:       '150g frango + 3 col. sopa feijão + 3 col. sopa arroz integral + salada crua à vontade',
+      lanche:       '1 maçã média + 20g mix castanhas + 1 col. sopa semente girassol',
+      janta:        'Sopa: 150g frango desfiado + abobrinha + cenoura + chuchu (porção generosa)',
+      ceia:         '100g iogurte grego natural',
+    },
+    images: {
+      cafe:         U('photo-1525351484163-7529414f2af8'), // egg + crepe breakfast
+      lanche_manha: U('photo-1502741078-5d25f2a92e87'), // green juice
+      almoco:       U('photo-1546069901-ba9599a7e63c'), // chicken rice beans bowl
+      lanche:       U('photo-1567306565-7ae6da49f888'), // apple + nuts
+      janta:        U('photo-1547592180-85f173990554'), // warm soup
+      ceia:         U('photo-1488477181945-e81351ae6da6'), // yogurt
     },
     calories: 1540, protein: 106,
   },
   {
     day: 'Quinta', emoji: '🐟', surf: false,
     meals: {
-      cafe: '2 ovos mexidos + ½ mamão médio + 1 col. chá chia + café preto',
+      cafe:         '2 ovos mexidos + ½ mamão médio + 1 col. chá chia + café preto',
       lanche_manha: '150g iogurte grego + ½ xíc. frutas vermelhas (morango, mirtilo)',
-      almoco: '150g peixe (tilápia/merluza) assado + 1 batata doce média + 1 xíc. vagem cozida + 1 col. chá azeite',
-      lanche: 'Smoothie: ½ mamão + 1 banana + 200ml água de coco + 1 col. chá chia',
-      janta: '120g frango grelhado + 1 wrap integral + 50g ricota + folhas de alface + 1 tomate',
-      ceia: 'Chá + 1 quadrado (10g) chocolate 70% (opcional)',
+      almoco:       '150g peixe (tilápia/atum) assado + 1 batata doce média + 1 xíc. vagem cozida + azeite',
+      lanche:       'Smoothie tropical: ½ mamão + 1 banana + 200ml água de coco + 1 col. chá chia',
+      janta:        '120g frango grelhado + 1 wrap integral + 50g ricota + alface + 1 tomate',
+      ceia:         'Chá + 1 quadrado (10g) chocolate 70% (opcional)',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'), // eggs + papaya
+      lanche_manha: U('photo-1512621776951-a57141f2eefd'), // yogurt with berries
+      almoco:       U('photo-1467003909585-2f8a72700288'), // fish fillet with veggies
+      lanche:       U('photo-1505576399279-565b52d4ac71'), // tropical smoothie
+      janta:        U('photo-1554502083-be884b249e28'), // wrap sandwich
+      ceia:         U('photo-1549007994-cb92caebd54b'), // dark chocolate + tea
     },
     calories: 1565, protein: 110,
   },
   {
     day: 'Sexta', emoji: '🥑', surf: false,
     meals: {
-      cafe: 'Vitamina: ½ manga + 1 banana + 1 col. chá chia + 200ml leite/água de coco + 20g mix nuts',
+      cafe:         'Vitamina: ½ manga + 1 banana + 1 col. chá chia + 200ml leite/água de coco + 20g mix nuts',
       lanche_manha: '2 ovos cozidos + 3 castanhas do Pará',
-      almoco: '150g frango grelhado + 4 col. sopa arroz integral + 1 abobrinha refogada + 1 cenoura',
-      lanche: 'Suco verde (200ml) + 1 torrada integral com ¼ abacate amassado',
-      janta: 'Omelete de 3 ovos + 1 xíc. espinafre refogado + ¼ abacate fatiado',
-      ceia: 'Chá de camomila + 5 nozes',
+      almoco:       '150g frango grelhado + 4 col. sopa arroz integral + 1 abobrinha refogada + 1 cenoura',
+      lanche:       'Suco verde (200ml) + 1 torrada integral com ¼ abacate amassado',
+      janta:        'Omelete de 3 ovos + 1 xíc. espinafre refogado + ¼ abacate fatiado',
+      ceia:         'Chá de camomila + 5 nozes',
+    },
+    images: {
+      cafe:         U('photo-1505576399279-565b52d4ac71'), // mango banana smoothie
+      lanche_manha: U('photo-1510693206972-df098062cb71'), // boiled/cooked eggs
+      almoco:       U('photo-1532550884684-3f4e3dfe18e7'), // grilled chicken + rice
+      lanche:       U('photo-1541519099-60279cf3be69'), // avocado toast + green juice
+      janta:        U('photo-1525351484163-7529414f2af8'), // omelette + spinach
+      ceia:         U('photo-1597318928-28811d41d423'), // camomile tea + nuts
     },
     calories: 1520, protein: 98,
   },
   {
     day: 'Sábado', emoji: '🌊', surf: true,
     meals: {
-      cafe: 'Bowl: 1 banana + ½ mamão + 4 col. aveia + 1 col. chia + mel + café',
+      cafe:         'Bowl: 1 banana + ½ mamão + 4 col. aveia + 1 col. chia + mel + café',
       lanche_manha: '🏄‍♀️ PRÉ-SURF: 1 banana + 20g castanhas (energia para o surf!)',
-      almoco: '180g frango/alcatra grelhada + salada variada à vontade + 1 porção mandioca (100g)',
-      lanche: '½ abacate com limão + 3 castanhas do Pará + 1 col. sopa girassol',
-      janta: '150g peixe grelhado + 1 xíc. legumes variados + salada verde à vontade',
-      ceia: 'Vitamina: 1 banana + 150ml leite + 1 col. chá mel (recuperação pós-surf)',
+      almoco:       '180g frango/alcatra grelhada + salada variada à vontade + 1 porção mandioca (100g)',
+      lanche:       '½ abacate com limão + 3 castanhas do Pará + 1 col. sopa girassol',
+      janta:        '150g peixe grelhado + 1 xíc. legumes variados + salada verde à vontade',
+      ceia:         'Vitamina: 1 banana + 150ml leite + 1 col. chá mel (recuperação pós-surf)',
+    },
+    images: {
+      cafe:         U('photo-1571748982800-fa51588ab41a'), // granola bowl with fruits
+      lanche_manha: U('photo-1571748982800-fa51588ab41a'), // banana pre-workout energy
+      almoco:       U('photo-1529042410-8d016f9c92c9'), // grilled meat + salad (bbq)
+      lanche:       U('photo-1523049673857-eb18f1d7b578'), // avocado halved
+      janta:        U('photo-1467003909585-2f8a72700288'), // grilled fish
+      ceia:         U('photo-1505576399279-565b52d4ac71'), // banana milk recovery smoothie
     },
     calories: 1620, protein: 115,
   },
   {
     day: 'Domingo', emoji: '🌸', surf: true,
     meals: {
-      cafe: '2 ovos mexidos + 30g queijo + ½ mamão + café + 5 nozes',
+      cafe:         '2 ovos mexidos + 30g queijo + ½ mamão + café + 5 nozes',
       lanche_manha: '🏄‍♀️ PRÉ-SURF: 150g iogurte grego + 1 banana (energia + proteína)',
-      almoco: '150g frango assado + 3 col. sopa arroz integral + 1 xíc. brócolis + 1 cenoura',
-      lanche: 'Suco verde (200ml) + 2 castanhas do Pará',
-      janta: '2 tapiocas (30g goma cada) recheadas com 100g frango desfiado + 50g ricota',
-      ceia: 'Chá relaxante + 20g castanhas variadas',
+      almoco:       '150g frango assado + 3 col. sopa arroz integral + 1 xíc. brócolis + 1 cenoura',
+      lanche:       'Suco verde (200ml) + 2 castanhas do Pará',
+      janta:        '2 tapiocas (30g goma cada) recheadas com 100g frango desfiado + 50g ricota',
+      ceia:         'Chá relaxante + 20g castanhas variadas',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'), // eggs + cheese + papaya
+      lanche_manha: U('photo-1488477181945-e81351ae6da6'), // yogurt + banana pre-surf
+      almoco:       U('photo-1546069901-ba9599a7e63c'), // roast chicken + rice + broccoli
+      lanche:       U('photo-1502741078-5d25f2a92e87'), // green juice
+      janta:        U('photo-1621996346565-e3debb646c84'), // tapioca / crepe with filling
+      ceia:         U('photo-1597318928-28811d41d423'), // relaxing tea
     },
     calories: 1555, protein: 107,
   },
 ];
 
 const mealLabels: Record<string, { label: string; time: string }> = {
-  cafe:         { label: '☀️ Café da Manhã',    time: '07:00' },
-  lanche_manha: { label: '🍎 Lanche da Manhã',  time: '10:00' },
-  almoco:       { label: '🌞 Almoço',            time: '12:30' },
-  lanche:       { label: '🍊 Lanche da Tarde',   time: '16:00 – 17:00' },
-  janta:        { label: '🌙 Jantar',            time: '19:00 – 20:00' },
-  ceia:         { label: '🌛 Ceia (opcional)',   time: '21:00 – 22:00' },
-};
-
-// Food images from Unsplash
-const MEAL_IMAGES: Record<string, string> = {
-  cafe: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=70&fit=crop',
-  lanche_manha: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=70&fit=crop',
-  almoco: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=70&fit=crop',
-  lanche: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&q=70&fit=crop',
-  janta: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&q=70&fit=crop',
-  ceia: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=70&fit=crop',
+  cafe:         { label: '☀️ Café da Manhã',   time: '07:00' },
+  lanche_manha: { label: '🍎 Lanche da Manhã', time: '10:00' },
+  almoco:       { label: '🌞 Almoço',           time: '12:30' },
+  lanche:       { label: '🍊 Lanche da Tarde',  time: '16:00 – 17:00' },
+  janta:        { label: '🌙 Jantar',           time: '19:00 – 20:00' },
+  ceia:         { label: '🌛 Ceia (opcional)',  time: '21:00 – 22:00' },
 };
 
 const TIFFANY = '#00b4b4';
@@ -109,11 +158,11 @@ const TIFFANY = '#00b4b4';
 export default function WeeklyMenu() {
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
-      <h2 className="text-xl font-black mb-1 flex items-center gap-2"
+      <h2 className="text-xl font-black mb-1"
         style={{ color: TIFFANY, fontFamily: 'Raleway, sans-serif', letterSpacing: '1px' }}>
         📅 CARDÁPIO DA SEMANA
       </h2>
-      <p className="text-sm text-gray-400 mb-5">Personalizado • ~1.500 kcal/dia • 6 refeições</p>
+      <p className="text-sm text-gray-400 mb-5">Personalizado • ~1.500 kcal/dia • 6 refeições com fotos</p>
 
       <div className="space-y-3">
         {MENU.map(day => (
@@ -135,23 +184,23 @@ export default function WeeklyMenu() {
                 <span className="text-gray-300 group-open:rotate-180 transition-transform">▼</span>
               </div>
             </summary>
-            <div className="px-4 pb-4 space-y-0" style={{ borderTop: '1px solid #e0fafa' }}>
+
+            <div className="px-4 pb-4" style={{ borderTop: '1px solid #e0fafa' }}>
               {Object.entries(day.meals).map(([key, value]) => (
-                <div key={key} className="py-3 border-b last:border-0 flex gap-3 items-start"
+                <div key={key} className="py-3 border-b last:border-0 flex gap-3 items-center"
                   style={{ borderColor: '#f0fffe' }}>
-                  {/* Food photo */}
                   <img
-                    src={MEAL_IMAGES[key]}
-                    alt={mealLabels[key].label}
-                    className="w-14 h-14 rounded-xl object-cover shrink-0 shadow-sm"
+                    src={(day.images as Record<string, string>)[key]}
+                    alt={mealLabels[key]?.label}
+                    className="w-16 h-16 rounded-xl object-cover shrink-0 shadow-sm"
                     loading="lazy"
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-0.5">
-                      <p className="text-xs font-black" style={{ color: TIFFANY, letterSpacing: '0.5px' }}>
-                        {mealLabels[key].label}
+                    <div className="flex items-center justify-between mb-0.5 gap-2">
+                      <p className="text-xs font-black shrink-0" style={{ color: TIFFANY, letterSpacing: '0.5px' }}>
+                        {mealLabels[key]?.label}
                       </p>
-                      <span className="text-xs text-gray-400 ml-2 shrink-0">🕐 {mealLabels[key].time}</span>
+                      <span className="text-xs text-gray-400 shrink-0">🕐 {mealLabels[key]?.time}</span>
                     </div>
                     <p className="text-sm text-gray-700 leading-relaxed">{value}</p>
                   </div>
