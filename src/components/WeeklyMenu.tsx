@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 // Each meal has a specific Unsplash photo matched to what's actually described
 const U = (id: string) => `https://images.unsplash.com/${id}?w=400&q=75&fit=crop`;
 
@@ -144,6 +146,150 @@ const MENU = [
   },
 ];
 
+// Luiz's menu — ~2.100 kcal/dia, ~155g proteína, foco em massa + definição
+const MENU_LUIZ = [
+  {
+    day: 'Segunda', emoji: '💪', surf: false,
+    meals: {
+      cafe:         '3 ovos mexidos + 2 fatias pão integral + 1 banana + 30g whey (opcional) + café',
+      lanche_manha: '40g mix castanhas + 1 maçã + 1 col. sopa pasta de amendoim',
+      almoco:       '200g frango grelhado + 5 col. sopa arroz integral + 1 xíc. brócolis + feijão (4 col.) + azeite',
+      lanche:       '200g iogurte grego + 1 banana + 4 col. sopa aveia + mel',
+      janta:        'Omelete de 4 ovos + espinafre + tomate + 1 fatia pão integral',
+      ceia:         'Coalhada ou iogurte grego (200g) + 5 amêndoas',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'),
+      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'),
+      almoco:       U('photo-1532550884684-3f4e3dfe18e7'),
+      lanche:       U('photo-1488477181945-e81351ae6da6'),
+      janta:        U('photo-1525351484163-7529414f2af8'),
+      ceia:         U('photo-1488477181945-e81351ae6da6'),
+    },
+    calories: 2100, protein: 155,
+  },
+  {
+    day: 'Terça', emoji: '🌿', surf: false,
+    meals: {
+      cafe:         'Vitamina: 2 bananas + 30g aveia + leite + 3 ovos mexidos + café',
+      lanche_manha: '1 batata doce cozida (200g) + 30g whey ou 150g frango desfiado',
+      almoco:       '200g carne bovina magra + 5 col. sopa arroz integral + 1 batata doce + salada',
+      lanche:       '200g iogurte grego + 30g granola + frutas vermelhas + mel',
+      janta:        '180g frango grelhado + 4 col. sopa arroz + 1 xíc. legumes refogados',
+      ceia:         'Iogurte grego (150g) + 5 nozes',
+    },
+    images: {
+      cafe:         U('photo-1505576399279-565b52d4ac71'),
+      lanche_manha: U('photo-1498579809087-ef1e558fd1da'),
+      almoco:       U('photo-1558030006-f679c2f35f32'),
+      lanche:       U('photo-1512621776951-a57141f2eefd'),
+      janta:        U('photo-1546069901-ba9599a7e63c'),
+      ceia:         U('photo-1488477181945-e81351ae6da6'),
+    },
+    calories: 2150, protein: 158,
+  },
+  {
+    day: 'Quarta', emoji: '🍳', surf: false,
+    meals: {
+      cafe:         '4 ovos mexidos com queijo + 2 fatias pão integral + mamão + café',
+      lanche_manha: '30g mix de nuts + 1 banana + 1 col. sopa pasta amendoim',
+      almoco:       '200g frango + 4 col. arroz integral + 4 col. feijão + salada completa + azeite',
+      lanche:       'Smoothie: 2 bananas + 30g aveia + leite ou água de coco + mel',
+      janta:        'Sopa proteica: 200g frango + legumes + batata doce + caldo',
+      ceia:         '3 ovos cozidos + 3 castanhas do Pará',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'),
+      lanche_manha: U('photo-1599599570-e3e6b04fe5b4'),
+      almoco:       U('photo-1546069901-ba9599a7e63c'),
+      lanche:       U('photo-1610832958506-aa56368176cf'),
+      janta:        U('photo-1547592180-85f173990554'),
+      ceia:         U('photo-1510693206972-df098062cb71'),
+    },
+    calories: 2080, protein: 152,
+  },
+  {
+    day: 'Quinta', emoji: '🐟', surf: false,
+    meals: {
+      cafe:         '3 ovos + 2 fatias pão integral + 1 banana + café preto',
+      lanche_manha: '200g iogurte grego + 1 banana + 30g aveia + canela',
+      almoco:       '200g peixe (atum/salmão) assado + 1 batata doce grande + 1 xíc. vagem + azeite',
+      lanche:       '2 tapiocas com frango desfiado (100g) + ricota + legumes',
+      janta:        '180g frango grelhado + salada completa + 2 fatias pão integral',
+      ceia:         'Iogurte grego (150g) + mel + 5 amêndoas',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'),
+      lanche_manha: U('photo-1488477181945-e81351ae6da6'),
+      almoco:       U('photo-1467003909585-2f8a72700288'),
+      lanche:       U('photo-1621996346565-e3debb646c84'),
+      janta:        U('photo-1532550884684-3f4e3dfe18e7'),
+      ceia:         U('photo-1488477181945-e81351ae6da6'),
+    },
+    calories: 2090, protein: 160,
+  },
+  {
+    day: 'Sexta', emoji: '🥩', surf: false,
+    meals: {
+      cafe:         'Vitamina: 2 bananas + leite + 30g aveia + 3 ovos mexidos + café',
+      lanche_manha: '2 ovos cozidos + 40g castanhas variadas + 1 maçã',
+      almoco:       '220g carne magra grelhada + 5 col. arroz integral + salada + feijão',
+      lanche:       'Batata doce assada (200g) + 100g frango desfiado + azeite',
+      janta:        'Omelete de 4 ovos + espinafre + cogumelos + 1 fatia pão integral',
+      ceia:         '200g iogurte grego + 1 col. mel + nozes',
+    },
+    images: {
+      cafe:         U('photo-1505576399279-565b52d4ac71'),
+      lanche_manha: U('photo-1510693206972-df098062cb71'),
+      almoco:       U('photo-1558030006-f679c2f35f32'),
+      lanche:       U('photo-1498579809087-ef1e558fd1da'),
+      janta:        U('photo-1525351484163-7529414f2af8'),
+      ceia:         U('photo-1488477181945-e81351ae6da6'),
+    },
+    calories: 2120, protein: 156,
+  },
+  {
+    day: 'Sábado', emoji: '🌊', surf: true,
+    meals: {
+      cafe:         'Bowl: 2 bananas + mamão + 5 col. aveia + chia + mel + café + whey opcional',
+      lanche_manha: '🏄‍♀️ PRÉ-SURF: 2 bananas + 40g castanhas (muita energia pro surf!)',
+      almoco:       '250g frango/alcatra grelhada + salada à vontade + mandioca (150g) + azeite',
+      lanche:       'Vitamina pós-surf: 2 bananas + leite + 30g aveia + mel',
+      janta:        '200g peixe grelhado + 4 col. arroz integral + legumes + salada',
+      ceia:         'Sanduíche integral: 2 fatias pão + frango (80g) + queijo + alface',
+    },
+    images: {
+      cafe:         U('photo-1571748982800-fa51588ab41a'),
+      lanche_manha: U('photo-1571748982800-fa51588ab41a'),
+      almoco:       U('photo-1529042410-8d016f9c92c9'),
+      lanche:       U('photo-1610832958506-aa56368176cf'),
+      janta:        U('photo-1467003909585-2f8a72700288'),
+      ceia:         U('photo-1554502083-be884b249e28'),
+    },
+    calories: 2200, protein: 162,
+  },
+  {
+    day: 'Domingo', emoji: '🌸', surf: true,
+    meals: {
+      cafe:         '4 ovos mexidos + queijo + mamão + pão integral (2 fatias) + café',
+      lanche_manha: '🏄‍♀️ PRÉ-SURF: 200g iogurte grego + 2 bananas (proteína + energia)',
+      almoco:       '220g frango assado + 5 col. arroz integral + brócolis + feijão + cenoura',
+      lanche:       'Vitamina: manga + banana + leite + aveia + mel',
+      janta:        '3 tapiocas (30g goma cada) com 150g frango desfiado + ricota + legumes',
+      ceia:         '200g iogurte grego + mel + 10g cacau em pó',
+    },
+    images: {
+      cafe:         U('photo-1510693206972-df098062cb71'),
+      lanche_manha: U('photo-1488477181945-e81351ae6da6'),
+      almoco:       U('photo-1546069901-ba9599a7e63c'),
+      lanche:       U('photo-1505576399279-565b52d4ac71'),
+      janta:        U('photo-1621996346565-e3debb646c84'),
+      ceia:         U('photo-1488477181945-e81351ae6da6'),
+    },
+    calories: 2130, protein: 158,
+  },
+];
+
 const mealLabels: Record<string, { label: string; time: string }> = {
   cafe:         { label: '☀️ Café da Manhã',   time: '07:00' },
   lanche_manha: { label: '🍎 Lanche da Manhã', time: '10:00' },
@@ -156,16 +302,40 @@ const mealLabels: Record<string, { label: string; time: string }> = {
 const TIFFANY = '#00b4b4';
 
 export default function WeeklyMenu() {
+  const [profile, setProfile] = useState<'roberta' | 'luiz'>('roberta');
+  const menu = profile === 'roberta' ? MENU : MENU_LUIZ;
+  const subtitle = profile === 'roberta'
+    ? '🌸 Roberta • ~1.500 kcal/dia • foco: secar + definição'
+    : '🌊 Luiz • ~2.100 kcal/dia • foco: massa + definição';
+
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
       <h2 className="text-xl font-black mb-1"
         style={{ color: TIFFANY, fontFamily: 'Raleway, sans-serif', letterSpacing: '1px' }}>
         📅 CARDÁPIO DA SEMANA
       </h2>
-      <p className="text-sm text-gray-400 mb-5">Personalizado • ~1.500 kcal/dia • 6 refeições com fotos</p>
+      <p className="text-sm text-gray-400 mb-4">{subtitle}</p>
+
+      {/* Profile selector */}
+      <div className="flex gap-2 mb-5">
+        <button onClick={() => setProfile('roberta')}
+          className="flex-1 py-2.5 rounded-xl text-sm font-black transition-all"
+          style={profile === 'roberta'
+            ? { background: 'linear-gradient(135deg,#f472b6,#ec4899)', color: 'white' }
+            : { background: '#f3f4f6', color: '#9ca3af' }}>
+          🌸 Roberta
+        </button>
+        <button onClick={() => setProfile('luiz')}
+          className="flex-1 py-2.5 rounded-xl text-sm font-black transition-all"
+          style={profile === 'luiz'
+            ? { background: 'linear-gradient(135deg,#60a5fa,#3b82f6)', color: 'white' }
+            : { background: '#f3f4f6', color: '#9ca3af' }}>
+          🌊 Luiz
+        </button>
+      </div>
 
       <div className="space-y-3">
-        {MENU.map(day => (
+        {menu.map(day => (
           <details key={day.day} className="group rounded-2xl overflow-hidden shadow-sm"
             style={{ border: `1.5px solid #e0fafa` }}>
             <summary className="flex items-center justify-between px-4 py-3.5 cursor-pointer list-none transition-colors"
