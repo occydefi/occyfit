@@ -94,39 +94,67 @@ const mealLabels: Record<string, { label: string; time: string }> = {
   ceia:         { label: '🌛 Ceia (opcional)',   time: '21:00 – 22:00' },
 };
 
+// Food images from Unsplash
+const MEAL_IMAGES: Record<string, string> = {
+  cafe: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=70&fit=crop',
+  lanche_manha: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=70&fit=crop',
+  almoco: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=70&fit=crop',
+  lanche: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&q=70&fit=crop',
+  janta: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&q=70&fit=crop',
+  ceia: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=70&fit=crop',
+};
+
+const TIFFANY = '#00b4b4';
+
 export default function WeeklyMenu() {
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-        📅 Cardápio da Semana
+      <h2 className="text-xl font-black mb-1 flex items-center gap-2"
+        style={{ color: TIFFANY, fontFamily: 'Raleway, sans-serif', letterSpacing: '1px' }}>
+        📅 CARDÁPIO DA SEMANA
       </h2>
-      <p className="text-sm text-gray-400 mb-5">Baseado nos seus gostos • ~1.500 kcal/dia • 5 refeições</p>
+      <p className="text-sm text-gray-400 mb-5">Personalizado • ~1.500 kcal/dia • 6 refeições</p>
 
       <div className="space-y-3">
         {MENU.map(day => (
-          <details key={day.day} className="group border border-gray-100 rounded-xl overflow-hidden">
-            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-orange-50 list-none transition-colors">
+          <details key={day.day} className="group rounded-2xl overflow-hidden shadow-sm"
+            style={{ border: `1.5px solid #e0fafa` }}>
+            <summary className="flex items-center justify-between px-4 py-3.5 cursor-pointer list-none transition-colors"
+              style={{ background: 'linear-gradient(90deg, #f0fffe, #ffffff)' }}>
               <div className="flex items-center gap-2">
                 <span className="text-xl">{day.emoji}</span>
-                <span className="font-semibold text-gray-800">{day.day}</span>
+                <span className="font-black text-gray-800" style={{ fontFamily: 'Raleway, sans-serif' }}>{day.day}</span>
                 {day.surf && (
-                  <span className="text-xs bg-blue-100 text-blue-500 px-2 py-0.5 rounded-full">🌊 Surf</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full font-bold"
+                    style={{ background: '#e0fafa', color: TIFFANY }}>🌊 Surf</span>
                 )}
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <span className="text-green-600 font-bold">{day.calories} kcal</span>
-                <span className="text-blue-500">{day.protein}g prot.</span>
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                <span className="font-black" style={{ color: TIFFANY }}>{day.calories} kcal</span>
+                <span className="text-blue-400 font-semibold">{day.protein}g</span>
+                <span className="text-gray-300 group-open:rotate-180 transition-transform">▼</span>
               </div>
             </summary>
-            <div className="px-4 pb-4 space-y-0 border-t border-gray-50">
+            <div className="px-4 pb-4 space-y-0" style={{ borderTop: '1px solid #e0fafa' }}>
               {Object.entries(day.meals).map(([key, value]) => (
-                <div key={key} className="py-2.5 border-b border-gray-50 last:border-0">
-                  <div className="flex items-center justify-between mb-0.5">
-                    <p className="text-xs font-semibold text-orange-500">{mealLabels[key].label}</p>
-                    <span className="text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">🕐 {mealLabels[key].time}</span>
+                <div key={key} className="py-3 border-b last:border-0 flex gap-3 items-start"
+                  style={{ borderColor: '#f0fffe' }}>
+                  {/* Food photo */}
+                  <img
+                    src={MEAL_IMAGES[key]}
+                    alt={mealLabels[key].label}
+                    className="w-14 h-14 rounded-xl object-cover shrink-0 shadow-sm"
+                    loading="lazy"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <p className="text-xs font-black" style={{ color: TIFFANY, letterSpacing: '0.5px' }}>
+                        {mealLabels[key].label}
+                      </p>
+                      <span className="text-xs text-gray-400 ml-2 shrink-0">🕐 {mealLabels[key].time}</span>
+                    </div>
+                    <p className="text-sm text-gray-700 leading-relaxed">{value}</p>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed">{value}</p>
                 </div>
               ))}
             </div>
