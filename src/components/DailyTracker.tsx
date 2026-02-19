@@ -51,7 +51,7 @@ export default function DailyTracker() {
     setAddMode(null);
   };
 
-  const analyzePhoto = async (base64: string) => {
+  const analyzePhoto = async (_base64: string) => {
     setAnalyzing(true);
     setPhotoResult(null);
     await new Promise(r => setTimeout(r, 1500));
