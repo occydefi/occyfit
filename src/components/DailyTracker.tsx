@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { DEFAULT_PROFILES, calculateGoalCalories, calculateProteinGoal } from '../data/profiles';
 
 interface LogEntry {
@@ -6,15 +6,25 @@ interface LogEntry {
   description: string;
   calories: number;
   protein: number;
+  image?: string;
 }
+
+type AddMode = 'choose' | 'manual' | 'photo';
 
 export default function DailyTracker() {
   const [activeProfile, setActiveProfile] = useState<'roberta' | 'luiz'>('roberta');
   const [log, setLog] = useState<LogEntry[]>([
     { meal: 'Café da Manhã', description: 'Bowl de frutas com sementes', calories: 280, protein: 9 },
   ]);
-  const [adding, setAdding] = useState(false);
+  const [addMode, setAddMode] = useState<AddMode | null>(null);
   const [form, setForm] = useState({ meal: 'Café da Manhã', description: '', calories: '', protein: '' });
+
+  // Photo analysis state
+  const [photoImage, setPhotoImage] = useState<string | null>(null);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [photoResult, setPhotoResult] = useState<any>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const cameraRef = useRef<HTMLInputElement>(null);
 
   const profile = DEFAULT_PROFILES[activeProfile];
   const goalCalories = calculateGoalCalories(profile);
@@ -26,24 +36,68 @@ export default function DailyTracker() {
   const progress = Math.min((totalCalories / goalCalories) * 100, 100);
   const proteinProgress = Math.min((totalProtein / goalProtein) * 100, 100);
 
-  const addEntry = () => {
-    if (!form.description || !form.calories) return;
-    setLog([...log, {
-      meal: form.meal,
-      description: form.description,
-      calories: Number(form.calories),
-      protein: Number(form.protein) || 0,
-    }]);
-    setForm({ meal: 'Café da Manhã', description: '', calories: '', protein: '' });
-    setAdding(false);
+  const mealEmoji: Record<string, string> = {
+    'Café da Manhã': '☀️', 'Lanche Manhã': '🍎',
+    'Almoço': '🌞', 'Lanche Tarde': '🍊', 'Jantar': '🌙', 'Ceia': '🌛',
   };
 
-  const mealEmoji: Record<string, string> = {
-    'Café da Manhã': '☀️',
-    'Almoço': '🌞',
-    'Lanche': '🍎',
-    'Jantar': '🌙',
-    'Pré-treino': '💪',
+  const addManual = () => {
+    if (!form.description || !form.calories) return;
+    setLog([...log, {
+      meal: form.meal, description: form.description,
+      calories: Number(form.calories), protein: Number(form.protein) || 0,
+    }]);
+    setForm({ meal: 'Café da Manhã', description: '', calories: '', protein: '' });
+    setAddMode(null);
+  };
+
+  const analyzePhoto = async (base64: string) => {
+    setAnalyzing(true);
+    setPhotoResult(null);
+    await new Promise(r => setTimeout(r, 1500));
+    // Demo mode
+    setPhotoResult({
+      description: 'Refeição identificada pela foto',
+      foods: [
+        { name: 'Alimento 1 (estimado)', calories: 180, protein: 8 },
+        { name: 'Alimento 2 (estimado)', calories: 120, protein: 5 },
+      ],
+      totalCalories: 300,
+      totalProtein: 13,
+      tip: 'Refeição equilibrada! Continue assim 💪',
+    });
+    setAnalyzing(false);
+  };
+
+  const handlePhotoFile = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const base64 = e.target?.result as string;
+      setPhotoImage(base64);
+      analyzePhoto(base64);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const addFromPhoto = () => {
+    if (!photoResult) return;
+    setLog([...log, {
+      meal: form.meal,
+      description: photoResult.description,
+      calories: photoResult.totalCalories,
+      protein: photoResult.totalProtein,
+      image: photoImage || undefined,
+    }]);
+    setPhotoImage(null);
+    setPhotoResult(null);
+    setAddMode(null);
+  };
+
+  const reset = () => {
+    setAddMode(null);
+    setPhotoImage(null);
+    setPhotoResult(null);
+    setAnalyzing(false);
   };
 
   return (
@@ -55,13 +109,12 @@ export default function DailyTracker() {
       {/* Profile selector */}
       <div className="flex gap-2 mb-5">
         {(['roberta', 'luiz'] as const).map(p => (
-          <button
-            key={p}
-            onClick={() => setActiveProfile(p)}
+          <button key={p} onClick={() => setActiveProfile(p)}
             className={`flex-1 py-2 rounded-xl text-sm font-medium transition-all ${
-              activeProfile === p ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600'
-            }`}
-          >
+              activeProfile === p
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md'
+                : 'bg-gray-100 text-gray-600'
+            }`}>
             {DEFAULT_PROFILES[p].name}
           </button>
         ))}
@@ -73,20 +126,18 @@ export default function DailyTracker() {
           <div className="relative w-32 h-32">
             <svg className="w-32 h-32 -rotate-90" viewBox="0 0 36 36">
               <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f3f4f6" strokeWidth="3.8" />
-              <circle
-                cx="18" cy="18" r="15.9" fill="none"
-                stroke={progress > 90 ? '#ef4444' : '#22c55e'}
+              <circle cx="18" cy="18" r="15.9" fill="none"
+                stroke={progress > 90 ? '#ef4444' : '#06b6d4'}
                 strokeWidth="3.8"
                 strokeDasharray={`${progress} 100`}
-                strokeLinecap="round"
-              />
+                strokeLinecap="round" />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <p className="text-2xl font-bold text-gray-800">{totalCalories}</p>
               <p className="text-xs text-gray-400">de {goalCalories}</p>
             </div>
           </div>
-          <p className={`mt-2 text-sm font-medium ${remaining >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+          <p className={`mt-2 text-sm font-medium ${remaining >= 0 ? 'text-cyan-600' : 'text-red-500'}`}>
             {remaining >= 0 ? `${remaining} kcal restantes` : `${Math.abs(remaining)} kcal acima`}
           </p>
         </div>
@@ -99,10 +150,7 @@ export default function DailyTracker() {
           <span>{totalProtein}g / {goalProtein}g</span>
         </div>
         <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-blue-500 rounded-full transition-all"
-            style={{ width: `${proteinProgress}%` }}
-          />
+          <div className="h-full bg-blue-500 rounded-full transition-all" style={{ width: `${proteinProgress}%` }} />
         </div>
       </div>
 
@@ -110,13 +158,16 @@ export default function DailyTracker() {
       <div className="space-y-2 mb-4">
         {log.map((entry, i) => (
           <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-xl px-3 py-2">
-            <span>{mealEmoji[entry.meal] || '🍽️'}</span>
+            {entry.image
+              ? <img src={entry.image} className="w-10 h-10 rounded-lg object-cover shrink-0" alt="" />
+              : <span className="text-xl">{mealEmoji[entry.meal] || '🍽️'}</span>
+            }
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-400">{entry.meal}</p>
               <p className="text-sm font-medium text-gray-700 break-words">{entry.description}</p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-sm font-bold text-green-600">{entry.calories} kcal</p>
+              <p className="text-sm font-bold text-cyan-600">{entry.calories} kcal</p>
               <p className="text-xs text-gray-400">{entry.protein}g prot.</p>
             </div>
             <button onClick={() => setLog(log.filter((_, j) => j !== i))} className="text-red-300 hover:text-red-500 text-lg">×</button>
@@ -124,47 +175,128 @@ export default function DailyTracker() {
         ))}
       </div>
 
-      {adding ? (
-        <div className="bg-green-50 rounded-xl p-4 space-y-3">
-          <select
-            value={form.meal}
-            onChange={e => setForm({ ...form, meal: e.target.value })}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm"
-          >
-            {Object.keys(mealEmoji).map(m => <option key={m}>{m}</option>)}
-          </select>
-          <input
-            placeholder="O que você comeu?"
-            value={form.description}
-            onChange={e => setForm({ ...form, description: e.target.value })}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm"
-          />
-          <div className="flex gap-2">
-            <input
-              type="number" placeholder="Calorias"
-              value={form.calories}
-              onChange={e => setForm({ ...form, calories: e.target.value })}
-              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm"
-            />
-            <input
-              type="number" placeholder="Proteína (g)"
-              value={form.protein}
-              onChange={e => setForm({ ...form, protein: e.target.value })}
-              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm"
-            />
-          </div>
-          <div className="flex gap-2">
-            <button onClick={addEntry} className="flex-1 bg-green-500 text-white rounded-lg py-2 text-sm font-medium">Adicionar</button>
-            <button onClick={() => setAdding(false)} className="flex-1 bg-gray-200 text-gray-600 rounded-lg py-2 text-sm">Cancelar</button>
-          </div>
-        </div>
-      ) : (
-        <button
-          onClick={() => setAdding(true)}
-          className="w-full border-2 border-dashed border-green-200 text-green-500 rounded-xl py-3 text-sm hover:bg-green-50 transition-colors"
-        >
+      {/* Add section */}
+      {addMode === null && (
+        <button onClick={() => setAddMode('choose')}
+          className="w-full border-2 border-dashed border-cyan-200 text-cyan-500 rounded-xl py-3 text-sm hover:bg-cyan-50 transition-colors">
           + Adicionar refeição
         </button>
+      )}
+
+      {/* Choose mode */}
+      {addMode === 'choose' && (
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-gray-600 text-center">Como quer registrar?</p>
+          <div className="grid grid-cols-2 gap-3">
+            <button onClick={() => setAddMode('photo')}
+              className="bg-gradient-to-b from-cyan-400 to-blue-500 text-white rounded-xl py-5 flex flex-col items-center gap-2 shadow-md hover:shadow-lg transition-all">
+              <span className="text-3xl">📸</span>
+              <span className="text-sm font-semibold">Tirar Foto</span>
+              <span className="text-xs text-blue-100">IA analisa as calorias</span>
+            </button>
+            <button onClick={() => setAddMode('manual')}
+              className="bg-gray-100 text-gray-700 rounded-xl py-5 flex flex-col items-center gap-2 hover:bg-gray-200 transition-all">
+              <span className="text-3xl">✏️</span>
+              <span className="text-sm font-semibold">Digitar</span>
+              <span className="text-xs text-gray-400">Inserir manualmente</span>
+            </button>
+          </div>
+          <button onClick={reset} className="w-full text-gray-400 text-sm py-2">Cancelar</button>
+        </div>
+      )}
+
+      {/* Photo mode */}
+      {addMode === 'photo' && (
+        <div className="space-y-3">
+          <select value={form.meal} onChange={e => setForm({ ...form, meal: e.target.value })}
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm">
+            {Object.keys(mealEmoji).map(m => <option key={m}>{m}</option>)}
+          </select>
+
+          {!photoImage && (
+            <div className="grid grid-cols-2 gap-3">
+              <button onClick={() => cameraRef.current?.click()}
+                className="bg-cyan-500 text-white rounded-xl py-4 flex flex-col items-center gap-1">
+                <span className="text-2xl">📷</span>
+                <span className="text-xs font-medium">Câmera</span>
+              </button>
+              <button onClick={() => fileRef.current?.click()}
+                className="bg-gray-100 text-gray-600 rounded-xl py-4 flex flex-col items-center gap-1">
+                <span className="text-2xl">🖼️</span>
+                <span className="text-xs font-medium">Galeria</span>
+              </button>
+            </div>
+          )}
+
+          <input ref={cameraRef} type="file" accept="image/*" capture="environment" className="hidden"
+            onChange={e => e.target.files?.[0] && handlePhotoFile(e.target.files[0])} />
+          <input ref={fileRef} type="file" accept="image/*" className="hidden"
+            onChange={e => e.target.files?.[0] && handlePhotoFile(e.target.files[0])} />
+
+          {photoImage && (
+            <img src={photoImage} className="w-full rounded-xl max-h-48 object-cover" alt="foto" />
+          )}
+
+          {analyzing && (
+            <div className="text-center py-4">
+              <div className="text-3xl mb-2 animate-bounce">🧌</div>
+              <p className="text-sm text-gray-500">Analisando calorias...</p>
+            </div>
+          )}
+
+          {photoResult && !analyzing && (
+            <div className="bg-cyan-50 rounded-xl p-4 space-y-2">
+              <p className="text-center font-bold text-2xl text-cyan-600">{photoResult.totalCalories} kcal</p>
+              <p className="text-center text-sm text-gray-500">💪 {photoResult.totalProtein}g proteína</p>
+              <div className="space-y-1">
+                {photoResult.foods.map((f: any, i: number) => (
+                  <div key={i} className="flex justify-between text-sm">
+                    <span className="text-gray-600">{f.name}</span>
+                    <span className="text-cyan-600 font-medium">{f.calories} kcal</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-green-600 bg-green-50 rounded-lg p-2">{photoResult.tip}</p>
+              <div className="flex gap-2 pt-1">
+                <button onClick={addFromPhoto}
+                  className="flex-1 bg-cyan-500 text-white rounded-xl py-2.5 text-sm font-medium">
+                  ✅ Adicionar ao dia
+                </button>
+                <button onClick={() => { setPhotoImage(null); setPhotoResult(null); }}
+                  className="px-4 bg-gray-100 text-gray-500 rounded-xl text-sm">
+                  🔄
+                </button>
+              </div>
+            </div>
+          )}
+
+          <button onClick={reset} className="w-full text-gray-400 text-sm py-1">Cancelar</button>
+        </div>
+      )}
+
+      {/* Manual mode */}
+      {addMode === 'manual' && (
+        <div className="bg-cyan-50 rounded-xl p-4 space-y-3">
+          <select value={form.meal} onChange={e => setForm({ ...form, meal: e.target.value })}
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white">
+            {Object.keys(mealEmoji).map(m => <option key={m}>{m}</option>)}
+          </select>
+          <input placeholder="O que você comeu?" value={form.description}
+            onChange={e => setForm({ ...form, description: e.target.value })}
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm" />
+          <div className="flex gap-2">
+            <input type="number" placeholder="Calorias" value={form.calories}
+              onChange={e => setForm({ ...form, calories: e.target.value })}
+              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm" />
+            <input type="number" placeholder="Proteína (g)" value={form.protein}
+              onChange={e => setForm({ ...form, protein: e.target.value })}
+              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm" />
+          </div>
+          <div className="flex gap-2">
+            <button onClick={addManual} className="flex-1 bg-cyan-500 text-white rounded-lg py-2.5 text-sm font-medium">Adicionar</button>
+            <button onClick={reset} className="flex-1 bg-gray-200 text-gray-600 rounded-lg py-2 text-sm">Cancelar</button>
+          </div>
+        </div>
       )}
     </div>
   );
