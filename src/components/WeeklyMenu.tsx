@@ -116,9 +116,9 @@ export default function WeeklyMenu() {
             </summary>
             <div className="px-4 pb-4 space-y-2 border-t border-gray-50">
               {Object.entries(day.meals).map(([key, value]) => (
-                <div key={key} className="flex gap-3 py-1.5">
-                  <span className="text-sm text-gray-400 w-36 shrink-0">{mealLabels[key]}</span>
-                  <span className="text-sm text-gray-700">{value}</span>
+                <div key={key} className="py-2 border-b border-gray-50 last:border-0">
+                  <p className="text-xs font-semibold text-green-600 mb-0.5">{mealLabels[key]}</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">{value}</p>
                 </div>
               ))}
             </div>

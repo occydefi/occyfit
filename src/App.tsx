@@ -4,11 +4,13 @@ import MealBuilder from './components/MealBuilder';
 import RecipeGenerator from './components/RecipeGenerator';
 import DailyTracker from './components/DailyTracker';
 import WeeklyMenu from './components/WeeklyMenu';
+import PhotoAnalyzer from './components/PhotoAnalyzer';
 
-type Tab = 'dia' | 'refeicao' | 'receitas' | 'cardapio';
+type Tab = 'dia' | 'foto' | 'refeicao' | 'receitas' | 'cardapio';
 
 const TABS: { id: Tab; label: string; emoji: string }[] = [
   { id: 'dia', label: 'Meu Dia', emoji: '📊' },
+  { id: 'foto', label: 'Foto', emoji: '📸' },
   { id: 'refeicao', label: 'Refeição', emoji: '🥗' },
   { id: 'receitas', label: 'Receitas', emoji: '🍳' },
   { id: 'cardapio', label: 'Cardápio', emoji: '📅' },
@@ -43,6 +45,7 @@ export default function App() {
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {tab === 'dia' && <DailyTracker />}
+        {tab === 'foto' && <PhotoAnalyzer />}
         {tab === 'refeicao' && <MealBuilder />}
         {tab === 'receitas' && <RecipeGenerator />}
         {tab === 'cardapio' && <WeeklyMenu />}
