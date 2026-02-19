@@ -29,6 +29,7 @@ export default function DailyTracker() {
   const profile = DEFAULT_PROFILES[activeProfile];
   const goalCalories = calculateGoalCalories(profile);
   const goalProtein = calculateProteinGoal(profile);
+  const profileColor = activeProfile === 'roberta' ? '#ec4899' : '#3b82f6';
 
   const totalCalories = log.reduce((s, e) => s + e.calories, 0);
   const totalProtein = log.reduce((s, e) => s + e.protein, 0);
@@ -108,16 +109,24 @@ export default function DailyTracker() {
 
       {/* Profile selector */}
       <div className="flex gap-2 mb-5">
-        {(['roberta', 'luiz'] as const).map(p => (
-          <button key={p} onClick={() => setActiveProfile(p)}
-            className={`flex-1 py-2 rounded-xl text-sm font-medium transition-all ${
-              activeProfile === p
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md'
-                : 'bg-gray-100 text-gray-600'
-            }`}>
-            {DEFAULT_PROFILES[p].name}
-          </button>
-        ))}
+        <button onClick={() => setActiveProfile('roberta')}
+          className={`flex-1 py-2.5 rounded-xl text-sm font-black transition-all flex items-center justify-center gap-2 ${
+            activeProfile === 'roberta'
+              ? 'text-white shadow-lg scale-105'
+              : 'bg-gray-100 text-gray-500'
+          }`}
+          style={activeProfile === 'roberta' ? { background: 'linear-gradient(135deg, #f472b6, #ec4899)' } : {}}>
+          🌸 Roberta
+        </button>
+        <button onClick={() => setActiveProfile('luiz')}
+          className={`flex-1 py-2.5 rounded-xl text-sm font-black transition-all flex items-center justify-center gap-2 ${
+            activeProfile === 'luiz'
+              ? 'text-white shadow-lg scale-105'
+              : 'bg-gray-100 text-gray-500'
+          }`}
+          style={activeProfile === 'luiz' ? { background: 'linear-gradient(135deg, #60a5fa, #3b82f6)' } : {}}>
+          🌊 Luiz
+        </button>
       </div>
 
       {/* Calorie ring */}
@@ -127,7 +136,7 @@ export default function DailyTracker() {
             <svg className="w-32 h-32 -rotate-90" viewBox="0 0 36 36">
               <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f3f4f6" strokeWidth="3.8" />
               <circle cx="18" cy="18" r="15.9" fill="none"
-                stroke={progress > 90 ? '#ef4444' : '#06b6d4'}
+                stroke={progress > 90 ? '#ef4444' : profileColor}
                 strokeWidth="3.8"
                 strokeDasharray={`${progress} 100`}
                 strokeLinecap="round" />
@@ -137,7 +146,8 @@ export default function DailyTracker() {
               <p className="text-xs text-gray-400">de {goalCalories}</p>
             </div>
           </div>
-          <p className={`mt-2 text-sm font-medium ${remaining >= 0 ? 'text-cyan-600' : 'text-red-500'}`}>
+          <p className={`mt-2 text-sm font-medium ${remaining < 0 ? 'text-red-500' : ''}`}
+            style={remaining >= 0 ? { color: profileColor } : {}}>
             {remaining >= 0 ? `${remaining} kcal restantes` : `${Math.abs(remaining)} kcal acima`}
           </p>
         </div>
