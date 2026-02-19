@@ -52,21 +52,61 @@ export default function DailyTracker() {
     setAddMode(null);
   };
 
-  const analyzePhoto = async (_base64: string) => {
+  const analyzePhoto = async (base64: string) => {
     setAnalyzing(true);
     setPhotoResult(null);
-    await new Promise(r => setTimeout(r, 1500));
-    // Demo mode
-    setPhotoResult({
-      description: 'Refeição identificada pela foto',
-      foods: [
-        { name: 'Alimento 1 (estimado)', calories: 180, protein: 8 },
-        { name: 'Alimento 2 (estimado)', calories: 120, protein: 5 },
-      ],
-      totalCalories: 300,
-      totalProtein: 13,
-      tip: 'Refeição equilibrada! Continue assim 💪',
-    });
+    try {
+      // Gemini Vision API — analisa a foto de verdade!
+      const GEMINI_KEY = 'AIzaSyBRHydayP0lYTVHveEbQ5LXqhBq266bRfQ';
+      const imageData = base64.split(',')[1]; // remove data:image/...;base64,
+      const mimeType = base64.split(';')[0].split(':')[1] || 'image/jpeg';
+
+      const prompt = `Você é um nutricionista especialista. Analise esta foto de refeição e identifique todos os alimentos visíveis.
+Responda APENAS em JSON válido, sem markdown, com este formato exato:
+{
+  "description": "Descrição geral da refeição em português",
+  "foods": [
+    {"name": "Nome do alimento (quantidade estimada)", "calories": 123, "protein": 10}
+  ],
+  "totalCalories": 456,
+  "totalProtein": 25,
+  "tip": "Dica nutricional em português (máx 60 caracteres)"
+}
+Seja específico com os alimentos brasileiros. Use estimativas realistas para porções domésticas.`;
+
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [
+              { text: prompt },
+              { inlineData: { mimeType, data: imageData } }
+            ]}],
+            generationConfig: { temperature: 0.1, maxOutputTokens: 500 }
+          })
+        }
+      );
+      const data = await res.json();
+      const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      // Parse JSON from response
+      const jsonMatch = raw.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        setPhotoResult(JSON.parse(jsonMatch[0]));
+      } else {
+        throw new Error('Formato inválido');
+      }
+    } catch {
+      // Fallback se API falhar
+      setPhotoResult({
+        description: 'Refeição analisada',
+        foods: [{ name: 'Verifique manualmente', calories: 300, protein: 15 }],
+        totalCalories: 300,
+        totalProtein: 15,
+        tip: 'Adicione manualmente para maior precisão',
+      });
+    }
     setAnalyzing(false);
   };
 
