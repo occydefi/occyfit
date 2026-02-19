@@ -85,11 +85,11 @@ const MENU = [
   },
 ];
 
-const mealLabels: Record<string, string> = {
-  cafe: '☀️ Café da Manhã',
-  almoco: '🌞 Almoço',
-  lanche: '🍎 Lanche',
-  janta: '🌙 Jantar',
+const mealLabels: Record<string, { label: string; time: string }> = {
+  cafe:   { label: '☀️ Café da Manhã', time: '07:00 – 08:00' },
+  almoco: { label: '🌞 Almoço',        time: '12:00 – 13:00' },
+  lanche: { label: '🍎 Lanche',        time: '15:00 – 16:00' },
+  janta:  { label: '🌙 Jantar',        time: '19:00 – 20:00' },
 };
 
 export default function WeeklyMenu() {
@@ -117,7 +117,10 @@ export default function WeeklyMenu() {
             <div className="px-4 pb-4 space-y-2 border-t border-gray-50">
               {Object.entries(day.meals).map(([key, value]) => (
                 <div key={key} className="py-2 border-b border-gray-50 last:border-0">
-                  <p className="text-xs font-semibold text-green-600 mb-0.5">{mealLabels[key]}</p>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <p className="text-xs font-semibold text-orange-500">{mealLabels[key].label}</p>
+                    <span className="text-xs text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">🕐 {mealLabels[key].time}</span>
+                  </div>
                   <p className="text-sm text-gray-700 leading-relaxed">{value}</p>
                 </div>
               ))}
