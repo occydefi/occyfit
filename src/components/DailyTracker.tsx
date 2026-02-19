@@ -61,10 +61,10 @@ export default function DailyTracker() {
       const imageData = base64.split(',')[1];
       const mimeType = base64.split(';')[0].split(':')[1] || 'image/jpeg';
 
-      const prompt = `Você é um nutricionista especialista. Analise esta foto de refeição e identifique todos os alimentos visíveis.
-Responda APENAS em JSON válido, sem markdown, com este formato exato:
-{"description":"Descrição geral da refeição em português","foods":[{"name":"Nome do alimento com quantidade estimada","calories":123,"protein":10}],"totalCalories":456,"totalProtein":25,"tip":"Dica nutricional curta em português"}
-Seja específico com alimentos brasileiros (arroz, feijão, frango, ovo, etc). Use estimativas realistas para porções domésticas.`;
+      const prompt = `Nutricionista brasileiro. Analise esta foto de comida.
+RESPONDA SOMENTE JSON PURO (sem markdown, sem explicação):
+{"description":"nome do prato em português","totalCalories":123,"totalProtein":10,"tip":"dica curta"}
+Seja direto. Estimativas realistas para porção doméstica brasileira.`;
 
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
@@ -76,27 +76,37 @@ Seja específico com alimentos brasileiros (arroz, feijão, frango, ovo, etc). U
               { text: prompt },
               { inlineData: { mimeType, data: imageData } }
             ]}],
-            generationConfig: { temperature: 0.1, maxOutputTokens: 500 }
+            generationConfig: { temperature: 0.1, maxOutputTokens: 200 }
           })
         }
       );
       const data = await res.json();
       const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-      // Parse JSON from response
-      const jsonMatch = raw.match(/\{[\s\S]*\}/);
+      // Parse JSON — strip markdown if present
+      const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        setPhotoResult(JSON.parse(jsonMatch[0]));
+        const parsed = JSON.parse(jsonMatch[0]);
+        // Ensure all fields exist
+        setPhotoResult({
+          description: parsed.description || 'Refeição analisada',
+          totalCalories: parsed.totalCalories || 0,
+          totalProtein: parsed.totalProtein || 0,
+          tip: parsed.tip || '',
+          foods: [],
+        });
       } else {
-        throw new Error('Formato inválido');
+        throw new Error('JSON não encontrado: ' + raw.slice(0, 100));
       }
-    } catch {
+    } catch (err) {
+      console.error('Gemini error:', err);
       // Fallback se API falhar
       setPhotoResult({
-        description: 'Refeição analisada',
-        foods: [{ name: 'Verifique manualmente', calories: 300, protein: 15 }],
-        totalCalories: 300,
-        totalProtein: 15,
-        tip: 'Adicione manualmente para maior precisão',
+        description: 'Erro na análise — corrija manualmente',
+        foods: [],
+        totalCalories: 0,
+        totalProtein: 0,
+        tip: 'API indisponível. Adicione os valores manualmente.',
       });
     }
     setAnalyzing(false);
