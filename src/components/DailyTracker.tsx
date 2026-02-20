@@ -57,7 +57,7 @@ export default function DailyTracker() {
     setPhotoResult(null);
     try {
       // Gemini Vision API — analisa a foto de verdade!
-      const GEMINI_KEY = 'AIzaSyBRHydayP0lYTVHveEbQ5LXqhBq266bRfQ';
+      const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY;
       const imageData = base64.split(',')[1];
       const mimeType = base64.split(';')[0].split(':')[1] || 'image/jpeg';
 
